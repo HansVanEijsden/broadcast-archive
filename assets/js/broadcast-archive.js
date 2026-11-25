@@ -1821,7 +1821,7 @@
     this.trackTitle.textContent = item.show || item.title;
 
     var meta = [];
-    var durationLabel = humanDuration(item.duration);
+    var durationLabel = item.hideDuration ? '' : humanDuration(item.duration);
 
     if (item.presenter) {
       meta.push(format(L.presentedBy || '%s', item.presenter));
@@ -2239,7 +2239,8 @@
       image: item.image ? String(item.image) : '',
       fallback: item.fallback ? String(item.fallback) : '',
       description: item.description ? String(item.description) : '',
-      playlist: Array.isArray(item.playlist) ? item.playlist : []
+      playlist: Array.isArray(item.playlist) ? item.playlist : [],
+      hideDuration: !!(item.hideDuration || item.hide_duration)
     };
   }
 
@@ -2253,7 +2254,7 @@
     root.setAttribute('data-ba-station', cfg.station || '');
     root.setAttribute('data-ba-search', '0');
     root.setAttribute('data-ba-programs', '0');
-    root.setAttribute('data-ba-playlist', '0');
+    root.setAttribute('data-ba-playlist', cfg.showPlaylist === false ? '0' : '1');
     root.setAttribute('data-ba-download', cfg.downloadEnabled === false ? '0' : '1');
     root.setAttribute('data-ba-per-page', '24');
     root.style.setProperty('--ba-accent', cfg.accent || '#e50526');

@@ -4,6 +4,15 @@ All notable changes to Broadcast Archive are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [2.2.1] — 2026-11-25
+
+### Fixed
+
+- The shared player now enables the archive playlist, so a hub-originated
+  episode shows the same Info button and description sheet as the archive page.
+- Hosts can mark an item with `hideDuration` to omit the duration from the
+  transport meta while keeping it for seeking.
+
 ## [2.2.0] — 2026-11-25
 
 ### Added
