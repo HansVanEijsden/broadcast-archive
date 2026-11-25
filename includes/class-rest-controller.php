@@ -218,6 +218,7 @@ final class Rest_Controller {
 		header( 'Content-Disposition: attachment; filename="' . self::ascii_filename( $filename ) . '"; filename*=UTF-8\'\'' . rawurlencode( $filename ) );
 		header( 'Content-Length: ' . $size );
 		header( 'Content-Transfer-Encoding: binary' );
+		header( 'X-Accel-Buffering: no' );
 		header( 'X-Content-Type-Options: nosniff' );
 		header( 'X-Robots-Tag: noindex, nofollow' );
 		header( 'Cache-Control: no-store, max-age=0' );

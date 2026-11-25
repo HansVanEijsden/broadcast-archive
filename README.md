@@ -73,8 +73,9 @@ old the cached copy is.
 
 ## Installation
 
-1. Copy the `broadcast-archive` folder into `wp-content/plugins/`, or upload a
-   zip via **Plugins → Add New → Upload Plugin**.
+1. [Download the latest release](https://github.com/HansVanEijsden/broadcast-archive/releases/latest)
+   and upload the zip via **Plugins → Add New → Upload Plugin**, or copy the
+   `broadcast-archive` folder into `wp-content/plugins/`.
 2. Activate **Broadcast Archive**.
 3. Open **Settings → Broadcast Archive** and enter the feed URL, for example
    `https://archive.salland1.nl/podcast.php`.
