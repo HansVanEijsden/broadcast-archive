@@ -4,6 +4,25 @@ All notable changes to Broadcast Archive are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [2.1.0] — 2026-11-25
+
+### Added
+
+- **Clicking an episode's title expands its details.** The title is now a real
+  button inside the heading, with the same `aria-expanded`/`aria-controls`
+  contract as the chevron. Starting playback from a row also expands that row,
+  so the description and playlist are immediately available.
+- **Description and playlist in the persistent player.** An Info button in the
+  transport opens a light sheet above the dark player with the current
+  broadcast's title, time, description and playlist. It stays in sync when the
+  playing episode changes, is scrollable, and closes with the close button, the
+  Info button or Escape. On phones the button becomes icon-only and the sheet
+  uses 64vh.
+
+### Changed
+
+- The expanded row's playlist rendering is shared with the player sheet.
+
 ## [2.0.3] — 2026-11-25
 
 ### Fixed

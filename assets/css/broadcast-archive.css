@@ -399,6 +399,25 @@
 	overflow-wrap: anywhere;
 }
 
+.ba .ba-episode__title-button {
+	display: block;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: none;
+	color: inherit;
+	font: inherit;
+	line-height: inherit;
+	text-align: left;
+	cursor: pointer;
+}
+
+.ba .ba-episode__title-button:hover {
+	text-decoration: underline;
+	text-underline-offset: 2px;
+}
+
 .ba .ba-episode__meta {
 	margin: 3px 0 0;
 	overflow: hidden;
@@ -1149,7 +1168,7 @@
 
 .ba-transport__seek {
 	display: grid;
-	grid-template-columns: auto minmax(0, 1fr) auto;
+	grid-template-columns: auto minmax(0, 1fr) auto auto;
 	align-items: center;
 	gap: 10px;
 	min-width: 0;
@@ -1277,6 +1296,159 @@
 	display: none;
 }
 
+.ba-transport__info {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	min-height: 38px;
+	margin: 0;
+	padding: 0 8px;
+	border: 0;
+	border-radius: 8px;
+	background: transparent;
+	color: #c3c9d2;
+	font: inherit;
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 1;
+	cursor: pointer;
+	transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.ba-transport__info .ba-icon {
+	width: 17px;
+	height: 17px;
+}
+
+.ba-transport__info:hover {
+	background: rgba(255, 255, 255, 0.08);
+	color: #fff;
+}
+
+.ba-transport__info[aria-expanded="true"] {
+	background: rgba(255, 255, 255, 0.12);
+	color: #fff;
+}
+
+.ba-transport__info[hidden] {
+	display: none;
+}
+
+/* Info panel: a light sheet that slides up from the dark transport. */
+.ba-transport-info {
+	position: absolute;
+	inset-inline: 0;
+	bottom: 100%;
+	max-height: min(62vh, 540px);
+	overflow-y: auto;
+	overscroll-behavior: contain;
+	border-radius: 10px 10px 0 0;
+	background: #fff;
+	color: var(--ba-text, #191c21);
+	color-scheme: light;
+	box-shadow: 0 -14px 34px rgba(20, 22, 26, 0.18);
+}
+
+.ba-transport-info[hidden] {
+	display: none;
+}
+
+.ba-transport-info:not([hidden]) {
+	animation: ba-info-in 0.22s ease-out both;
+}
+
+@keyframes ba-info-in {
+	from {
+		opacity: 0;
+		transform: translateY(14px);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+.ba-transport-info__inner {
+	max-width: 1120px;
+	margin: 0 auto;
+	padding: 0 16px 22px;
+}
+
+.ba-transport-info__head {
+	position: sticky;
+	top: 0;
+	z-index: 1;
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 16px;
+	margin-bottom: 14px;
+	padding: 16px 0 12px;
+	border-bottom: 1px solid var(--ba-line, #e2e5e9);
+	background: #fff;
+}
+
+.ba-transport-info__titles {
+	min-width: 0;
+}
+
+.ba-transport-info__title {
+	margin: 0;
+	font-size: 16px;
+	font-weight: 650;
+	line-height: 1.3;
+	overflow-wrap: anywhere;
+}
+
+.ba-transport-info__close {
+	display: grid;
+	place-items: center;
+	flex: none;
+	width: 38px;
+	height: 38px;
+	margin: -4px -8px 0 0;
+	padding: 0;
+	border: 0;
+	border-radius: 8px;
+	background: transparent;
+	color: var(--ba-muted, #5a6371);
+	cursor: pointer;
+}
+
+.ba-transport-info__close:hover {
+	background: #f0f2f5;
+	color: var(--ba-ink, #14161a);
+}
+
+.ba-transport-info__close .ba-icon {
+	width: 18px;
+	height: 18px;
+}
+
+.ba-transport-info .ba-details__when {
+	margin: 4px 0 0;
+}
+
+.ba-transport-info .ba-details__description {
+	max-width: 74ch;
+	margin: 0;
+}
+
+.ba-transport-info__playlist {
+	margin-top: 16px;
+	padding-top: 12px;
+	border-top: 1px solid var(--ba-line, #e2e5e9);
+}
+
+.ba-transport-info__playlist[hidden] {
+	display: none;
+}
+
+.ba-transport-info :focus-visible {
+	outline-color: var(--ba-ink, #14161a);
+}
+
 .ba-transport ::selection {
 	background: var(--ba-accent, #e50526);
 	color: #fff;
@@ -1337,6 +1509,31 @@ body.ba-transport-open {
 
 	.ba-transport__aside {
 		grid-area: aside;
+	}
+
+	.ba-transport__info {
+		width: 38px;
+		padding: 0;
+	}
+
+	.ba-transport__info-label {
+		display: none;
+	}
+
+	.ba-transport-info {
+		max-height: 64vh;
+	}
+
+	.ba-transport-info__inner {
+		padding: 0 14px 18px;
+	}
+
+	.ba-transport-info__head {
+		padding-top: 14px;
+	}
+
+	.ba-transport-info__title {
+		font-size: 15px;
 	}
 
 	.ba-transport__aside .ba-transport__download {

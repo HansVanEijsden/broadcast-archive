@@ -58,7 +58,8 @@
     search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.4-3.4"/>',
     replay: '<path d="M4 10a8 8 0 1 1 2.3 5.7"/><path d="M4 4v6h6"/>',
     back: '<path d="M9 4 5 8l4 4"/><path d="M5 8h7a6 6 0 1 1-5.6 8.2"/>',
-    forward: '<path d="m15 4 4 4-4 4"/><path d="M19 8h-7a6 6 0 1 0 5.6 8.2"/>'
+    forward: '<path d="m15 4 4 4-4 4"/><path d="M19 8h-7a6 6 0 1 0 5.6 8.2"/>',
+    info: '<circle cx="12" cy="12" r="8.25"/><path d="M12 11.1v5"/><path d="M12 7.9h.01"/>'
   };
 
   function icon(name, extraClass) {
@@ -571,6 +572,48 @@
     this.trackTitle = el('p', { class: 'ba-transport__title' });
     this.trackMeta = el('p', { class: 'ba-transport__meta' });
 
+    var infoId = 'ba-transport-info-' + this.uid;
+
+    this.transportInfoButton = el('button', {
+      type: 'button',
+      class: 'ba-transport__info',
+      'aria-expanded': 'false',
+      'aria-controls': infoId,
+      'aria-label': L.showDescription || 'Show description',
+      onclick: function () {
+        self.toggleTransportInfo();
+      }
+    }, [icon('info'), el('span', { class: 'ba-transport__info-label', text: L.info || 'Info' })]);
+
+    this.infoTitle = el('h2', { class: 'ba-transport-info__title' });
+    this.infoWhen = el('p', { class: 'ba-details__when' });
+    this.infoDescription = el('p', { class: 'ba-details__description' });
+    this.infoPlaylist = el('div', { class: 'ba-transport-info__playlist' });
+
+    this.transportInfo = el('div', {
+      class: 'ba ba-transport-info',
+      id: infoId,
+      hidden: true,
+      role: 'region',
+      'aria-label': L.description || 'Description'
+    }, [
+      el('div', { class: 'ba-transport-info__inner' }, [
+        el('div', { class: 'ba-transport-info__head' }, [
+          el('div', { class: 'ba-transport-info__titles' }, [this.infoTitle, this.infoWhen]),
+          el('button', {
+            type: 'button',
+            class: 'ba-transport-info__close',
+            'aria-label': L.close || 'Close',
+            onclick: function () {
+              self.closeTransportInfo(true);
+            }
+          }, [icon('close')])
+        ]),
+        this.infoDescription,
+        this.infoPlaylist
+      ])
+    ]);
+
     this.transportPlay = el('button', {
       type: 'button',
       class: 'ba-transport__play',
@@ -634,7 +677,8 @@
         el('div', { class: 'ba-transport__seek' }, [
           this.currentTimeEl,
           this.transportSeek,
-          this.totalTimeEl
+          this.totalTimeEl,
+          this.transportInfoButton
         ]),
         el('div', { class: 'ba-transport__aside' }, [
           this.transportDownload,
@@ -647,7 +691,8 @@
             }
           }, [icon('close')])
         ])
-      ])
+      ]),
+      this.transportInfo
     ]);
 
     this.transport.setAttribute('aria-label', L.player || '');
@@ -655,6 +700,13 @@
 
     this.transport.addEventListener('keydown', function (event) {
       if (event.key === 'Escape') {
+        if (self.transportInfo && !self.transportInfo.hidden) {
+          event.preventDefault();
+          event.stopPropagation();
+          self.closeTransportInfo(true);
+          return;
+        }
+
         event.preventDefault();
         self.closeTransport();
       }
@@ -1024,7 +1076,12 @@
       type: 'button',
       class: 'ba-episode__play',
       onclick: function () {
+        var wasPlaying = self.playingId === item.id && self.playing;
         self.startItem(item);
+
+        if (!wasPlaying && !self.open.has(item.id)) {
+          self.toggleDetails(item, row, moreButton, details);
+        }
       }
     });
     playButton.setAttribute('aria-label', format(isPlaying && this.playing ? (L.pauseItem || '') : (L.playItem || ''), itemLabel(item)));
@@ -1054,8 +1111,16 @@
 
     var summary = String(item.description || '').replace(/\s+/g, ' ').trim();
 
+    var titleButton = el('button', {
+      type: 'button',
+      class: 'ba-episode__title-button',
+      'aria-expanded': detailsOpen ? 'true' : 'false',
+      'aria-controls': detailsId,
+      text: item.show || item.title
+    });
+
     var body = el('div', { class: 'ba-episode__body' }, [
-      el('h3', { class: 'ba-episode__title', text: item.show || item.title }),
+      el('h3', { class: 'ba-episode__title' }, [titleButton]),
       desktopMeta ? el('p', { class: 'ba-episode__meta ba-episode__meta--desktop', text: desktopMeta }) : null,
       mobileMeta ? el('p', { class: 'ba-episode__meta ba-episode__meta--mobile', text: mobileMeta }) : null,
       summary ? el('p', { class: 'ba-episode__excerpt', text: summary.length > 160 ? summary.slice(0, 157) + '…' : summary }) : null
@@ -1076,6 +1141,10 @@
     }
 
     moreButton.addEventListener('click', function () {
+      self.toggleDetails(item, row, moreButton, details);
+    });
+
+    titleButton.addEventListener('click', function () {
       self.toggleDetails(item, row, moreButton, details);
     });
 
@@ -1163,20 +1232,12 @@
       body.push(el('p', { class: 'ba-details__description', text: item.description }));
     }
 
-    if (this.showPlaylist && Array.isArray(item.playlist) && item.playlist.length) {
-      var tracks = item.playlist.map(function (track) {
-        return el('li', { class: 'ba-track' }, [
-          el('span', { class: 'ba-track__time', text: track.time }),
-          el('span', { class: 'ba-track__song' }, [
-            el('strong', { class: 'ba-track__artist', text: track.artist }),
-            el('span', { class: 'ba-track__title', text: track.title })
-          ])
-        ]);
-      });
+    var trackList = this.buildTrackList(item);
 
+    if (trackList) {
       body.push(el('div', { class: 'ba-details__playlist' }, [
         el('h4', { class: 'ba-details__heading', text: L.playlist || '' }),
-        el('ol', { class: 'ba-tracklist' }, tracks)
+        trackList
       ]));
     }
 
@@ -1194,6 +1255,10 @@
       details.hidden = true;
       button.setAttribute('aria-expanded', 'false');
       button.setAttribute('aria-label', L.showDetails || '');
+      var closedTitleButton = row.querySelector('.ba-episode__title-button');
+      if (closedTitleButton) {
+        closedTitleButton.setAttribute('aria-expanded', 'false');
+      }
       return;
     }
 
@@ -1205,6 +1270,10 @@
     details.hidden = false;
     button.setAttribute('aria-expanded', 'true');
     button.setAttribute('aria-label', L.hideDetails || '');
+    var openedTitleButton = row.querySelector('.ba-episode__title-button');
+    if (openedTitleButton) {
+      openedTitleButton.setAttribute('aria-expanded', 'true');
+    }
   };
 
   Archive.prototype.renderResume = function () {
@@ -1574,6 +1643,8 @@
       return;
     }
 
+    this.closeTransportInfo(false);
+
     var focusWasInside = this.transport.contains(document.activeElement);
     var restoreId = this.focusItemId;
 
@@ -1748,8 +1819,107 @@
     this.transportDownload.setAttribute('download', this.downloadName(item));
     this.transportDownload.hidden = !this.downloadEnabled;
 
+    this.renderTransportInfo(item);
+
     this.syncTransportControls();
     this.syncTransportProgress();
+  };
+
+  Archive.prototype.buildTrackList = function (item) {
+    if (!this.showPlaylist || !Array.isArray(item.playlist) || !item.playlist.length) {
+      return null;
+    }
+
+    var tracks = item.playlist.map(function (track) {
+      return el('li', { class: 'ba-track' }, [
+        el('span', { class: 'ba-track__time', text: track.time }),
+        el('span', { class: 'ba-track__song' }, [
+          el('strong', { class: 'ba-track__artist', text: track.artist }),
+          el('span', { class: 'ba-track__title', text: track.title })
+        ])
+      ]);
+    });
+
+    return el('ol', { class: 'ba-tracklist' }, tracks);
+  };
+
+  Archive.prototype.renderTransportInfo = function (item) {
+    if (!this.transportInfo || !item) {
+      return;
+    }
+
+    var hasDescription = !!(item.description && String(item.description).trim());
+    var hasPlaylist = this.showPlaylist && Array.isArray(item.playlist) && item.playlist.length > 0;
+    var hasInfo = hasDescription || hasPlaylist;
+
+    this.transportInfoButton.hidden = !hasInfo;
+
+    if (!hasInfo) {
+      this.closeTransportInfo(false);
+      return;
+    }
+
+    this.infoTitle.textContent = item.show || item.title;
+    this.infoWhen.textContent = [dateNumeric(item.date), item.time].filter(Boolean).join(' · ');
+    this.infoDescription.textContent = hasDescription ? item.description : '';
+    this.infoDescription.hidden = !hasDescription;
+
+    var trackList = this.buildTrackList(item);
+    this.infoPlaylist.replaceChildren();
+
+    if (trackList) {
+      this.infoPlaylist.appendChild(el('h3', { class: 'ba-details__heading', text: L.playlist || '' }));
+      this.infoPlaylist.appendChild(trackList);
+      this.infoPlaylist.hidden = false;
+    } else {
+      this.infoPlaylist.hidden = true;
+    }
+  };
+
+  Archive.prototype.toggleTransportInfo = function () {
+    if (!this.transportInfo) {
+      return;
+    }
+
+    if (this.transportInfo.hidden) {
+      this.openTransportInfo();
+    } else {
+      this.closeTransportInfo(true);
+    }
+  };
+
+  Archive.prototype.openTransportInfo = function () {
+    var item = this.currentItem();
+
+    if (!item || !this.transportInfo) {
+      return;
+    }
+
+    this.renderTransportInfo(item);
+
+    if (this.transportInfoButton.hidden) {
+      return;
+    }
+
+    this.transportInfo.hidden = false;
+    this.transportInfoButton.setAttribute('aria-expanded', 'true');
+    this.transportInfoButton.setAttribute('aria-label', L.hideDescription || 'Hide description');
+  };
+
+  Archive.prototype.closeTransportInfo = function (focusButton) {
+    if (!this.transportInfo) {
+      return;
+    }
+
+    if (!this.transportInfo.hidden) {
+      this.transportInfo.hidden = true;
+      this.transportInfoButton.setAttribute('aria-expanded', 'false');
+      this.transportInfoButton.setAttribute('aria-label', L.showDescription || 'Show description');
+    }
+
+    if (focusButton) {
+      this.transportInfoButton.focus({ preventScroll: true });
+    }
   };
 
   Archive.prototype.syncTransportControls = function () {
@@ -1932,6 +2102,12 @@
       var tag = (event.target.tagName || '').toLowerCase();
 
       if (tag === 'input' || tag === 'select' || tag === 'textarea') {
+        return;
+      }
+
+      if (self.transportInfo && !self.transportInfo.hidden) {
+        event.preventDefault();
+        self.closeTransportInfo(true);
         return;
       }
 

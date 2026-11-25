@@ -11,6 +11,33 @@
         ],
         "createdAt": "2026-11-25T16:42:51.292Z",
         "reason": "intentional demo: preview harness mirrors the Newspaper theme's Verdana body font; preview is not shipped plugin UI"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgb(102, 102, 102)",
+        "files": [
+          "preview/index.html"
+        ],
+        "createdAt": "2026-11-25T19:52:00.000Z",
+        "reason": "intentional demo: preview harness mirrors the Newspaper theme chrome (breadcrumb, heading, 24px preview title); preview is not shipped plugin UI"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgb(17, 17, 17)",
+        "files": [
+          "preview/index.html"
+        ],
+        "createdAt": "2026-11-25T19:52:00.000Z",
+        "reason": "intentional demo: preview harness mirrors the Newspaper theme chrome (breadcrumb, heading, 24px preview title); preview is not shipped plugin UI"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "24px",
+        "files": [
+          "preview/index.html"
+        ],
+        "createdAt": "2026-11-25T19:52:00.000Z",
+        "reason": "intentional demo: preview harness mirrors the Newspaper theme chrome (breadcrumb, heading, 24px preview title); preview is not shipped plugin UI"
       }
     ]
   }
