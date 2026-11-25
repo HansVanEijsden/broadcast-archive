@@ -142,6 +142,15 @@ final class Rest_Controller {
 			);
 		}
 
+		// Remove the temp file even if the visitor aborts mid-download.
+		register_shutdown_function(
+			static function () use ( $temp ): void {
+				if ( file_exists( $temp ) ) {
+					wp_delete_file( $temp );
+				}
+			}
+		);
+
 		$response = wp_safe_remote_get(
 			$url,
 			array(
