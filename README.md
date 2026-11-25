@@ -251,7 +251,9 @@ header in mind.
 **I updated the plugin; do I need to do anything?**
 Purge the page cache once after an update. The cached HTML references the
 stylesheet and script by their modification time; a purge makes it pick up the
-new version immediately. The episode data itself never needs a purge.
+new version immediately. The episode data itself never needs a purge. If your
+host runs PHP OPcache with timestamp validation disabled or a long revalidate
+interval, restart PHP-FPM so the new PHP code is loaded.
 
 **How fresh is the list?**
 The parsed feed is reused for five minutes by default. New episodes appear
