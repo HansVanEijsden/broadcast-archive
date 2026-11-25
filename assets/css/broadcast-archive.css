@@ -559,7 +559,30 @@
 	display: flex;
 	flex-wrap: wrap;
 	gap: 8px;
+	margin-bottom: 0;
+}
+
+.ba .ba-details__head {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto;
+	align-items: start;
+	gap: 16px;
 	margin-bottom: 14px;
+}
+
+.ba .ba-details__head-text {
+	min-width: 0;
+}
+
+/* Programme cover in the expanded row: a quiet top-right anchor, not a card. */
+.ba .ba-details__cover {
+	width: 112px;
+	height: 112px;
+	margin: 0;
+	border: 1px solid var(--ba-line);
+	border-radius: 8px;
+	background: var(--ba-surface);
+	object-fit: cover;
 }
 
 .ba .ba-button {
@@ -1358,6 +1381,15 @@ body.ba-transport-open {
 		padding: 0 2px 16px;
 	}
 
+	.ba .ba-details__head {
+		gap: 12px;
+	}
+
+	.ba .ba-details__cover {
+		width: 88px;
+		height: 88px;
+	}
+
 	.ba .ba-episode__title {
 		font-size: 15px;
 	}
@@ -1405,6 +1437,11 @@ body.ba-transport-open {
 
 	.ba .ba-episode__details-inner {
 		padding: 14px;
+	}
+
+	.ba .ba-details__cover {
+		width: 76px;
+		height: 76px;
 	}
 
 	.ba .ba-day-section__count {

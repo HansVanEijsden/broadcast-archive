@@ -4,6 +4,23 @@ All notable changes to Broadcast Archive are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [2.0.2] — 2026-11-25
+
+### Added
+
+- **Programme cover in the expanded episode details.** Opening a broadcast now
+  shows its cover at the top right of the detail panel (112 px on desktop,
+  88 px on tablet, 76 px on phones). The image is lazy-loaded, decorative
+  (empty `alt`; the programme name is already the row heading) and falls back
+  to the channel image if the episode image cannot be loaded.
+
+### Changed
+
+- **Removed the "1 hour" duration from the episode rows and the expanded
+  details.** Every hourly broadcast showed the same value; the time range
+  already communicates it. The persistent transport still shows the duration
+  for the item that is currently playing.
+
 ## [2.0.1] — 2026-11-25
 
 ### Fixed

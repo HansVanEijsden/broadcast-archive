@@ -3,7 +3,7 @@
  * Plugin Name:       Broadcast Archive
  * Plugin URI:        https://github.com/HansVanEijsden/broadcast-archive
  * Description:       Turn any radio station's podcast feed into a fast, searchable listen-again page with a persistent player and downloads. Station-neutral, translation-ready and safe behind full-page caches.
- * Version:           2.0.1
+ * Version:           2.0.2
  * Requires at least: 6.4
  * Requires PHP:      8.1
  * Author:            Hans van Eijsden Consultancy
@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'BROADCAST_ARCHIVE_VERSION', '2.0.0' );
+define( 'BROADCAST_ARCHIVE_VERSION', '2.0.2' );
 define( 'BROADCAST_ARCHIVE_FILE', __FILE__ );
 define( 'BROADCAST_ARCHIVE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'BROADCAST_ARCHIVE_URL', plugin_dir_url( __FILE__ ) );

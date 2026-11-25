@@ -1047,11 +1047,10 @@
 
     var timeEl = el('div', { class: 'ba-episode__time' }, timeChildren);
 
-    var durationLabel = humanDuration(item.duration);
     var presenterLabel = item.presenter ? format(L.presentedBy || '%s', item.presenter) : '';
     var presenterShort = item.presenter || '';
-    var desktopMeta = [presenterLabel, durationLabel].filter(Boolean).join(' · ');
-    var mobileMeta = [item.time, presenterShort, durationLabel].filter(Boolean).join(' · ');
+    var desktopMeta = presenterLabel;
+    var mobileMeta = [item.time, presenterShort].filter(Boolean).join(' · ');
 
     var summary = String(item.description || '').replace(/\s+/g, ' ').trim();
 
@@ -1099,9 +1098,8 @@
 
   Archive.prototype.buildDetails = function (item) {
     var self = this;
-    var durationLabel = humanDuration(item.duration);
     var sizeLabel = fileSize(item.size);
-    var when = [dateNumeric(item.date), item.time, durationLabel].filter(Boolean).join(' · ');
+    var when = [dateNumeric(item.date), item.time].filter(Boolean).join(' · ');
 
     var playButton = el('button', {
       type: 'button',
@@ -1128,10 +1126,38 @@
       actions.push(download);
     }
 
-    var body = [
-      el('p', { class: 'ba-details__when', text: when }),
-      el('div', { class: 'ba-details__actions' }, actions)
+    var headChildren = [
+      el('div', { class: 'ba-details__head-text' }, [
+        el('p', { class: 'ba-details__when', text: when }),
+        el('div', { class: 'ba-details__actions' }, actions)
+      ])
     ];
+
+    var coverUrl = item.image || item.fallback || '';
+
+    if (coverUrl) {
+      var cover = el('img', {
+        class: 'ba-details__cover',
+        src: coverUrl,
+        alt: '',
+        width: 112,
+        height: 112,
+        loading: 'lazy',
+        decoding: 'async'
+      });
+
+      cover.addEventListener('error', function () {
+        if (item.fallback && cover.src !== item.fallback) {
+          cover.src = item.fallback;
+        } else {
+          cover.remove();
+        }
+      });
+
+      headChildren.push(cover);
+    }
+
+    var body = [el('div', { class: 'ba-details__head' }, headChildren)];
 
     if (item.description) {
       body.push(el('p', { class: 'ba-details__description', text: item.description }));
