@@ -17,3 +17,4 @@ preview/episodes.json
 .impeccable/mocks/
 .impeccable/questions/
 .impeccable/hook.cache.json
+dist/
