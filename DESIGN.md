@@ -9,6 +9,8 @@ colors:
   muted: "#5a6371"
   line: "#e2e5e9"
   line-strong: "#c9ced5"
+  line-hover: "#aeb5bf"
+  muted-soft: "#9aa2ad"
   surface: "#ffffff"
   surface-alt: "#f6f7f9"
   error-surface: "#fff5f6"
@@ -19,6 +21,14 @@ colors:
   transport-muted: "#a7aeb9"
   transport-line: "#3a3f48"
 typography:
+  heading:
+    fontSize: "16px"
+    fontWeight: 700
+    lineHeight: 1.3
+  micro:
+    fontSize: "8.5px"
+    fontWeight: 700
+    lineHeight: 1
   body:
     fontFamily: "inherit (host theme sans: Verdana / system-ui stack)"
     fontSize: "15px"
@@ -42,6 +52,9 @@ typography:
     fontWeight: 650
     lineHeight: 1.3
 rounded:
+  hairline: "2px"
+  scrollbar: "3px"
+  subtle: "4px"
   sm: "6px"
   md: "8px"
   lg: "10px"
@@ -148,6 +161,9 @@ weight and hairlines rather than extra tints.
   and descriptions. About 6:1 on white.
 - **Hairline** (`#e2e5e9`): row separators.
 - **Hairline Strong** (`#c9ced5`): field and control outlines.
+- **Hairline Hover** (`#aeb5bf`): hover state of a field or select outline.
+- **Quiet Separator** (`#9aa2ad`): the dash between a track artist and title,
+  and other non-essential punctuation.
 - **Paper** (`#ffffff`): row background and fields.
 - **Paper Tint** (`#f6f7f9`): hover rows and the expanded episode panel.
 - **Error Wash** (`#fff5f6`) with **Error Edge** (`#f0c9cf`) and **Error Ink**
@@ -185,8 +201,11 @@ is the only place numerals get special treatment.
   than truncating to an unrecognisable stub.
 - **Meta** (400, 12.5 px): time, presenter, duration and excerpt. One line,
   ellipsis when needed.
+- **Section heading** (700, 16 px, 1.3): day headings and the error title.
 - **Label** (700, 11.5 px, 0.06em, uppercase): "Speellijst", "Verder luisteren".
   Short functional labels only.
+- **Micro** (700, 8.5 px, 1): the ±15 s badge inside the transport skip buttons.
+  Only where space is physically constrained.
 - **Transport title** (650, 14 px): one line, ellipsis; the transport is a
   glanceable piece of hardware, not a reading surface.
 
@@ -232,7 +251,9 @@ ring); it is a state, not decoration.
 ## Shapes
 
 Corners are small and consistent: 8 px for fields and buttons, 10 px for the
-expanded panel, 6 px for the transport artwork. Filter chips are full pills
+expanded panel, 6 px for the transport artwork. Thin utilities use a 2 px
+(hairline progress and range tracks), 3 px (scrollbar thumb) or 4 px (skeleton
+bars) radius rather than inventing a new shape language. Filter chips are full pills
 (`999px`) and play buttons are perfect circles. Nothing is clipped, notched or
 masked. The form language is the station's existing editorial rectangles with
 one softer pill row for dates.

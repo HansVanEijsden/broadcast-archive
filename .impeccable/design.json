@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-25T17:30:00+01:00",
+  "generatedAt": "2026-11-25T17:40:00+01:00",
   "title": "Design System: Broadcast Archive",
   "extensions": {
     "colorMeta": {
@@ -78,6 +78,36 @@
           "#8a919d",
           "#e6e8ec"
         ]
+      },
+      "line-hover": {
+        "role": "neutral",
+        "displayName": "Hairline Hover",
+        "canonical": "#aeb5bf",
+        "tonalRamp": [
+          "#5e646b",
+          "#7d848c",
+          "#9aa1a9",
+          "#aeb5bf",
+          "#c4c9cf",
+          "#d9dde1",
+          "#eceef0",
+          "#f7f8f9"
+        ]
+      },
+      "muted-soft": {
+        "role": "neutral",
+        "displayName": "Quiet Separator",
+        "canonical": "#9aa2ad",
+        "tonalRamp": [
+          "#3f454e",
+          "#58606b",
+          "#737c88",
+          "#9aa2ad",
+          "#b6bcc5",
+          "#d0d4da",
+          "#e7e9ed",
+          "#f7f8f9"
+        ]
       }
     },
     "typographyMeta": {
@@ -100,6 +130,14 @@
       "transport-title": {
         "displayName": "Transport title",
         "purpose": "Now-playing programme in the persistent player."
+      },
+      "heading": {
+        "displayName": "Section heading",
+        "purpose": "Day headings and the error title."
+      },
+      "micro": {
+        "displayName": "Micro",
+        "purpose": "±15 second badge inside transport skip buttons."
       }
     },
     "shadows": [
