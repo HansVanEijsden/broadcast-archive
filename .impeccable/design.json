@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-25T17:15:00+01:00",
+  "generatedAt": "2026-11-25T17:30:00+01:00",
   "title": "Design System: Broadcast Archive",
   "extensions": {
     "colorMeta": {
@@ -132,6 +132,10 @@
       }
     ],
     "breakpoints": [
+      {
+        "name": "cover-drop",
+        "value": "420px"
+      },
       {
         "name": "narrow",
         "value": "360px"

@@ -47,7 +47,7 @@ Complete rewrite of the original `salland1-uitzending-gemist` plugin.
   timezone, page size, cache lifetime, download toggle and extra download hosts.
 - Shortcode attributes and the legacy `[salland1_uitzending_gemist]` alias.
 - Dutch translation (`nl_NL`), English source strings.
-- Parser tests (59 assertions) and a WordPress-free design preview.
+- Parser tests and a WordPress-free design preview.
 
 ### Changed
 

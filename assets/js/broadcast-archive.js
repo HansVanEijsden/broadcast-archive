@@ -250,6 +250,12 @@
     return label.charAt(0).toUpperCase() + label.slice(1);
   }
 
+  function itemLabel(item) {
+    return [item.show || item.title, dateNumeric(item.date), item.time]
+      .filter(Boolean)
+      .join(', ');
+  }
+
   function capitalizeFirst(value) {
     return value ? value.charAt(0).toUpperCase() + value.slice(1) : value;
   }
@@ -399,7 +405,7 @@
     this.lastUi = 0;
     this.lastMedia = 0;
     this.closeTimer = null;
-    this.focusBeforeClose = null;
+    this.focusItemId = '';
     this.audio = null;
     this.transport = null;
     this.skeleton = root.querySelector('.ba-skeleton');
@@ -423,6 +429,18 @@
       this.showPrograms ? this.buildProgramSelect() : null
     ]);
 
+    this.staleText = el('p', { class: 'ba-stale__text' });
+    this.staleEl = el('div', { class: 'ba-stale', role: 'status', hidden: true }, [
+      this.staleText,
+      el('button', {
+        type: 'button',
+        class: 'ba-stale__retry',
+        text: L.retry || '',
+        onclick: function () {
+          self.load(true);
+        }
+      })
+    ]);
     this.resumeSlot = el('div', { class: 'ba-resume-slot' });
     this.daysEl = el('div', { class: 'ba-days', role: 'group', 'aria-label': L.dayLabel || '' });
     this.countEl = el('p', { class: 'ba-count' });
@@ -451,6 +469,7 @@
     this.statusEl = this.root.querySelector('.ba-status') || el('p', { class: 'ba-sr-only', role: 'status' });
 
     this.root.insertBefore(this.toolbar, this.skeleton || this.root.firstChild);
+    this.root.appendChild(this.staleEl);
     this.root.appendChild(this.resumeSlot);
     this.root.appendChild(this.daysEl);
     this.root.appendChild(this.metaEl);
@@ -659,6 +678,7 @@
 
     this.loading = true;
     this.error = null;
+    this.staleEl.hidden = true;
     this.root.setAttribute('aria-busy', 'true');
 
     if (isRetry) {
@@ -734,6 +754,11 @@
       });
     }).catch(function (error) {
       window.clearTimeout(timer);
+
+      if (error && (error.name === 'AbortError' || error.name === 'TypeError')) {
+        throw new Error('');
+      }
+
       throw error;
     });
   };
@@ -741,6 +766,8 @@
   Archive.prototype.applyData = function (data) {
     this.loading = false;
     this.error = null;
+    this.staleEl.hidden = !data.stale;
+    this.staleText.textContent = data.stale ? (L.staleNotice || '') : '';
 
     this.items = data.items.filter(function (item) {
       return item && item.id && item.audio;
@@ -1000,7 +1027,7 @@
         self.startItem(item);
       }
     });
-    playButton.setAttribute('aria-label', format(isPlaying && this.playing ? (L.pauseItem || '') : (L.playItem || ''), item.show));
+    playButton.setAttribute('aria-label', format(isPlaying && this.playing ? (L.pauseItem || '') : (L.playItem || ''), itemLabel(item)));
 
     var moreButton = el('button', {
       type: 'button',
@@ -1010,10 +1037,15 @@
     }, icon('chevron'));
     moreButton.setAttribute('aria-label', detailsOpen ? (L.hideDetails || '') : (L.showDetails || ''));
 
-    var timeEl = el('div', { class: 'ba-episode__time', 'aria-hidden': 'true' }, [
-      el('span', { class: 'ba-episode__time-start', text: start || '—' }),
-      el('span', { class: 'ba-episode__time-end', text: end })
-    ]);
+    var timeChildren = [el('span', { class: 'ba-episode__time-start', text: start || '—' })];
+
+    if (start && end) {
+      timeChildren.push(el('span', { class: 'ba-sr-only', text: ' – ' }));
+    }
+
+    timeChildren.push(el('span', { class: 'ba-episode__time-end', text: end }));
+
+    var timeEl = el('div', { class: 'ba-episode__time' }, timeChildren);
 
     var durationLabel = humanDuration(item.duration);
     var presenterLabel = item.presenter ? format(L.presentedBy || '%s', item.presenter) : '';
@@ -1293,6 +1325,8 @@
     audio.addEventListener('play', function () {
       self.playing = true;
       self.ended = false;
+      self.audioError = false;
+      self.syncTransport();
       self.syncPlayState();
     });
 
@@ -1353,6 +1387,8 @@
     var self = this;
 
     if (this.playingId === item.id && this.audio) {
+      this.audioError = false;
+
       if (!this.audio.paused) {
         this.audio.pause();
         return;
@@ -1440,6 +1476,8 @@
     }
 
     if (audio.paused) {
+      this.audioError = false;
+
       if (this.ended) {
         audio.currentTime = 0;
         this.ended = false;
@@ -1493,6 +1531,7 @@
       this.transport.hidden = false;
     }
 
+    this.focusItemId = this.playingId || '';
     var self = this;
 
     window.requestAnimationFrame(function () {
@@ -1510,6 +1549,7 @@
     }
 
     var focusWasInside = this.transport.contains(document.activeElement);
+    var restoreId = this.focusItemId;
 
     if (this.audio) {
       this.audio.pause();
@@ -1517,6 +1557,7 @@
 
     this.rememberProgress();
     this.playingId = '';
+    this.focusItemId = '';
     this.playing = false;
     this.ended = false;
     this.transport.classList.remove('is-open');
@@ -1530,11 +1571,16 @@
       }
     }, 300);
 
-    if (focusWasInside) {
-      var playButtons = this.listEl.querySelectorAll('.ba-episode__play');
+    if (focusWasInside || document.activeElement === document.body) {
+      var restoreRow = restoreId ? this.rows.get(restoreId) : null;
+      var restoreButton = restoreRow ? restoreRow.querySelector('.ba-episode__play') : null;
 
-      if (playButtons.length) {
-        playButtons[0].focus({ preventScroll: true });
+      if (!restoreButton || !document.contains(restoreButton)) {
+        restoreButton = this.listEl.querySelector('.ba-episode__play');
+      }
+
+      if (restoreButton) {
+        restoreButton.focus({ preventScroll: true });
       }
     }
   };
@@ -1602,7 +1648,7 @@
 
     if (button) {
       button.replaceChildren(icon(isPlaying ? 'pause' : 'play'));
-      button.setAttribute('aria-label', format(isPlaying ? (L.pauseItem || '') : (L.playItem || ''), item.show));
+      button.setAttribute('aria-label', format(isPlaying ? (L.pauseItem || '') : (L.playItem || ''), itemLabel(item)));
     }
 
     var details = row.querySelector('.ba-episode__details');
@@ -1625,7 +1671,7 @@
     var iconName = isPlaying ? 'pause' : (this.ended && isCurrent ? 'replay' : 'play');
 
     button.replaceChildren(icon(iconName), el('span', { text: label }));
-    button.setAttribute('aria-label', format(isPlaying ? (L.pauseItem || '') : (L.playItem || ''), item.show));
+    button.setAttribute('aria-label', format(isPlaying ? (L.pauseItem || '') : (L.playItem || ''), itemLabel(item)));
   };
 
   Archive.prototype.syncTransport = function () {

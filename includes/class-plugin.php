@@ -60,6 +60,7 @@ final class Plugin {
 		add_action( 'init', array( $this, 'register_shortcodes' ) );
 		add_action( 'rest_api_init', array( Rest_Controller::class, 'register_routes' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ) );
+		add_action( 'admin_notices', array( $this, 'maybe_show_config_notice' ) );
 
 		if ( is_admin() ) {
 			Settings::init();
@@ -89,6 +90,28 @@ final class Plugin {
 
 		// Backwards compatibility with the original Salland1 plugin.
 		add_shortcode( 'salland1_uitzending_gemist', array( Shortcode::class, 'render' ) );
+	}
+
+	/**
+	 * Remind editors when the plugin is active without a feed URL.
+	 *
+	 * Kept out of the shortcode output so cached public HTML stays identical.
+	 *
+	 * @return void
+	 */
+	public function maybe_show_config_notice(): void {
+		if ( ! current_user_can( 'manage_options' ) || '' !== Settings::feed_url() ) {
+			return;
+		}
+
+		$url = admin_url( 'options-general.php?page=broadcast-archive' );
+
+		printf(
+			'<div class="notice notice-warning"><p>%1$s <a href="%2$s">%3$s</a></p></div>',
+			esc_html__( 'Broadcast Archive is active, but no feed URL has been configured yet.', 'broadcast-archive' ),
+			esc_url( $url ),
+			esc_html__( 'Configure the feed', 'broadcast-archive' )
+		);
 	}
 
 	/**
@@ -186,6 +209,7 @@ final class Plugin {
 				'loading'          => __( 'Loading broadcasts…', 'broadcast-archive' ),
 				'loadErrorTitle'   => __( 'Could not load the broadcasts', 'broadcast-archive' ),
 				'loadErrorBody'    => __( 'Please check your connection and try again.', 'broadcast-archive' ),
+				'staleNotice'      => __( 'The archive is temporarily unavailable. Showing the last known broadcasts.', 'broadcast-archive' ),
 				'retry'            => __( 'Try again', 'broadcast-archive' ),
 				'emptyTitle'       => __( 'No broadcasts match these filters', 'broadcast-archive' ),
 				'clearFilters'     => __( 'Clear filters', 'broadcast-archive' ),

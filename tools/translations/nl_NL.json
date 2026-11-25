@@ -50,7 +50,6 @@
   "Now playing: %s": "Nu te beluisteren: %s",
   "Open the archive": "Open het archief",
   "opens in a new tab": "opent in een nieuw tabblad",
-  "Optional attributes: per_page=\"24\", station=\"Salland1\", accent=\"#e50526\", search=\"1\", programs=\"1\", playlist=\"1\", download=\"1\".": "Optionele attributen: per_page=\"24\", station=\"Salland1\", accent=\"#e50526\", search=\"1\", programs=\"1\", playlist=\"1\", download=\"1\".",
   "Optional. One host per line, for audio served from a CDN instead of the feed host. Everything else is rejected.": "Optioneel. Eén host per regel, voor audio van een CDN in plaats van de feedhost. Al het andere wordt geweigerd.",
   "Pause": "Pauzeren",
   "Pause “%s”": "“%s” pauzeren",
@@ -104,5 +103,8 @@
   "Use the site timezone": "Gebruik de tijdzone van de site",
   "Used for play buttons, the current position and focus rings.": "Gebruikt voor afspeelknoppen, de huidige positie en focusranden.",
   "You are not allowed to do this.": "Je hebt hier geen rechten voor.",
-  "%s hr": "%s uur"
+  "%s hr": "%s uur",
+  "Optional attributes: per_page=\"24\", station=\"Radio Example\", accent=\"#e50526\", search=\"1\", programs=\"1\", playlist=\"1\", download=\"1\".": "Optionele attributen: per_page=\"24\", station=\"Radio Example\", accent=\"#e50526\", search=\"1\", programs=\"1\", playlist=\"1\", download=\"1\".",
+  "The archive is temporarily unavailable. Showing the last known broadcasts.": "Het archief is tijdelijk niet bereikbaar. Je ziet de laatst bekende uitzendingen.",
+  "This file is not an audio broadcast.": "Dit bestand is geen audio-uitzending."
 }

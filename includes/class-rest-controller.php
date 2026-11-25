@@ -181,8 +181,25 @@ final class Rest_Controller {
 			);
 		}
 
-		$type = strtolower( trim( (string) wp_remote_retrieve_header( $response, 'content-type' ) ) );
-		$type = self::safe_content_type( $type );
+		$raw_type = strtolower( trim( (string) wp_remote_retrieve_header( $response, 'content-type' ) ) );
+		$raw_type = trim( explode( ';', $raw_type )[0] );
+
+		$path_ext = strtolower( (string) pathinfo( (string) wp_parse_url( $url, PHP_URL_PATH ), PATHINFO_EXTENSION ) );
+		$audio_ext = in_array( $path_ext, array( 'm4a', 'm4b', 'mp3', 'aac', 'ogg', 'opus', 'mp4', 'wav', 'webm' ), true );
+		$audio_type = str_starts_with( $raw_type, 'audio/' ) || 'video/mp4' === $raw_type;
+		$octet_audio = in_array( $raw_type, array( 'application/octet-stream', 'binary/octet-stream', '' ), true ) && $audio_ext;
+
+		if ( ! $audio_type && ! $octet_audio ) {
+			wp_delete_file( $temp );
+
+			return new \WP_Error(
+				'ba_download_type',
+				__( 'This file is not an audio broadcast.', 'broadcast-archive' ),
+				array( 'status' => 415 )
+			);
+		}
+
+		$type = self::safe_content_type( $raw_type );
 
 		$filename = self::filename( $requested_name, $url, $type );
 

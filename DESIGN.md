@@ -203,14 +203,14 @@ that is 696 px inside the Newspaper theme; the plugin itself sets no maximum
 and relies on the page.
 
 The schedule uses one row grid: play button `3rem`, time rail `5.25rem`, a
-flexible body, and a `2.25rem` details button, with 12 px gaps and 8 px block
+flexible body, and a `2.5rem` details button, with 12 px gaps and 8 px block
 padding. Day sections are separated by 22 px and a 1 px rule. The expanded
 panel is inset by 4.75rem so it aligns under the body text, and the inner panel
 uses 16 px padding, 10 px radius and the paper tint.
 
 Responsive changes are structural, not typographic: below 560 px the toolbar
 stacks; below 680 px the time rail disappears and the meta line leads with the
-time; below 360 px the transport drops the artwork and tightens its controls.
+time; below 420 px the transport drops the artwork and below 360 px it tightens its controls.
 Touch targets stay at 38–44 px. The page never overflows horizontally at
 320 px.
 
@@ -281,10 +281,20 @@ to red only while that episode is playing.
 A fixed, full-width dark plane (`#14161a`, white text) with a 44 px cover, the
 programme title and one meta line, ±15 s buttons, a 46 px red play control, a
 scrubber with red progress, elapsed/total time, download and close. On phones it
-becomes two rows: track and controls, then the scrubber; below 360 px the cover
+becomes two rows: track and controls, then the scrubber; below 420 px the cover
 is dropped so the title stays readable. It rises with a 260 ms
 `cubic-bezier(0.2, 0.8, 0.25, 1)` transform and respects reduced motion. It is
 the only player; the inline details never duplicate it.
+
+### Feedback states
+
+- **Empty:** a dashed paper panel with one sentence and a "Clear filters" ghost
+  button; never a blank page.
+- **Load failure:** a light error wash, the failure title, a plain-language
+  body and a red "Try again" button.
+- **Stale feed:** a neutral paper-tint strip above the day chips: "The archive
+  is temporarily unavailable. Showing the last known broadcasts." plus an
+  underlined "Try again". It uses no red, because playback is not affected.
 
 ### Resume row
 

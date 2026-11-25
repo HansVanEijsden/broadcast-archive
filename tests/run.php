@@ -71,6 +71,7 @@ $items    = $payload['items'];
 
 same( 7, $payload['count'], 'Seven playable items, the item without audio is skipped' );
 same( 'De Nachtvlucht - 26 November 2026 (00:00 - 01:00)', $items[0]['title'], 'Newest broadcast first' );
+check( (int) $items[0]['ts'] > (int) $items[1]['ts'], 'Items are sorted by timestamp' );
 
 $afternoon = find_item( $items, 'Goedemiddag Salland' );
 same( 'Goedemiddag Salland', $afternoon['show'], 'Programme name is cut before the date' );
@@ -137,6 +138,7 @@ same( 'Chris', $atom['items'][0]['presenter'], 'Atom itunes:author parsed and st
 same( 3540, $atom['items'][0]['duration'], 'Atom duration parsed' );
 same( 'https://example.org/morning.jpg', $atom['items'][0]['image'], 'Atom cover derived from enclosure' );
 same( 'Hello & welcome to the morning show.', $atom['items'][0]['description'], 'Atom summary decoded' );
+same( 'https://example.org/logo.png', $atom['items'][0]['fallback'], 'Channel logo is kept as the image fallback' );
 
 same( 3612, BroadcastArchive\Episode::duration_seconds( '1:00:12' ), 'H:MM:SS duration' );
 same( 2730, BroadcastArchive\Episode::duration_seconds( '45:30' ), 'MM:SS duration' );

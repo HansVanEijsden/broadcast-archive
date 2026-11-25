@@ -532,7 +532,7 @@ final class Settings {
 			<h2 class="title"><?php echo esc_html__( 'Shortcode', 'broadcast-archive' ); ?></h2>
 			<p><code>[broadcast_archive]</code></p>
 			<p class="description">
-				<?php echo esc_html__( 'Optional attributes: per_page="24", station="Salland1", accent="#e50526", search="1", programs="1", playlist="1", download="1".', 'broadcast-archive' ); ?>
+				<?php echo esc_html__( 'Optional attributes: per_page="24", station="Radio Example", accent="#e50526", search="1", programs="1", playlist="1", download="1".', 'broadcast-archive' ); ?>
 			</p>
 		</div>
 		<?php

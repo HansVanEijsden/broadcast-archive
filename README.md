@@ -172,7 +172,7 @@ Page (cached HTML)               WordPress                        Archive
 ## Development
 
 ```bash
-php tests/run.php                 # parser tests (59 assertions, no WordPress needed)
+php tests/run.php                 # parser tests (61 assertions, no WordPress needed)
 node --check assets/js/broadcast-archive.js
 php -l broadcast-archive.php      # and every file in includes/
 python3 tools/i18n.py all nl_NL   # regenerate POT/PO/MO
@@ -246,6 +246,11 @@ per-user values. The REST endpoint is intentionally excluded from page caches
 (it lives under `/wp-json`, which most configurations bypass). If you cache
 `/wp-json` at a CDN, keep the plugin's `Cache-Control: public, max-age=60`
 header in mind.
+
+**I updated the plugin; do I need to do anything?**
+Purge the page cache once after an update. The cached HTML references the
+stylesheet and script by their modification time; a purge makes it pick up the
+new version immediately. The episode data itself never needs a purge.
 
 **How fresh is the list?**
 The parsed feed is reused for five minutes by default. New episodes appear

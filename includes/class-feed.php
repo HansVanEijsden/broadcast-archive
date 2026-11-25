@@ -535,13 +535,17 @@ final class Feed {
 			return $stale;
 		}
 
+		/**
+		 * Fires when the archive cannot be reached and no good payload exists.
+		 *
+		 * @param string $reason Internal reason for logging or debugging.
+		 */
+		do_action( 'broadcast_archive_feed_error', $reason );
+
 		return new \WP_Error(
 			'ba_feed_unavailable',
 			__( 'The archive is temporarily unavailable. Please try again in a moment.', 'broadcast-archive' ),
-			array(
-				'status' => 503,
-				'reason' => $reason,
-			)
+			array( 'status' => 503 )
 		);
 	}
 
@@ -645,6 +649,12 @@ final class Feed {
 	public static function clear_cache(): void {
 		global $wpdb;
 
+		// Explicit keys also clear a persistent object cache, which a direct
+		// database delete would leave stale.
+		delete_transient( self::cache_key() );
+		delete_transient( self::last_good_key() );
+		delete_transient( 'ba_feed_lock_' . md5( self::feed_url() ) );
+
 		$like = $wpdb->esc_like( '_transient_ba_' ) . '%';
 
 		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
@@ -657,9 +667,5 @@ final class Feed {
 		);
 
 		delete_option( self::META_OPTION );
-
-		if ( function_exists( 'wp_cache_flush_group' ) ) {
-			wp_cache_flush_group( 'broadcast-archive' );
-		}
 	}
 }

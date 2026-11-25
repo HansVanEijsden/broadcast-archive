@@ -140,15 +140,8 @@ final class Shortcode {
 	private static function render_unconfigured(): string {
 		Plugin::instance()->enqueue_assets();
 
-		$message = '<div class="ba ba-notice">';
-
-		if ( current_user_can( 'manage_options' ) ) {
-			$message .= '<p>' . esc_html__( 'Broadcast Archive is active, but no feed URL has been configured yet.', 'broadcast-archive' ) . '</p>';
-			$message .= '<p><a class="button" href="' . esc_url( admin_url( 'options-general.php?page=broadcast-archive' ) ) . '">' . esc_html__( 'Configure the feed', 'broadcast-archive' ) . '</a></p>';
-		} else {
-			$message .= '<p>' . esc_html__( 'The broadcast archive is currently unavailable. Please try again later.', 'broadcast-archive' ) . '</p>';
-		}
-
+		$message  = '<div class="ba ba-notice">';
+		$message .= '<p>' . esc_html__( 'The broadcast archive is currently unavailable. Please try again later.', 'broadcast-archive' ) . '</p>';
 		$message .= '</div>';
 
 		return $message;
