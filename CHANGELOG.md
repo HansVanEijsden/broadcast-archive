@@ -4,6 +4,17 @@ All notable changes to Broadcast Archive are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [2.0.3] — 2026-11-25
+
+### Fixed
+
+- **Download button hover state.** The host theme's global link hover (for
+  example the Newspaper theme's `.tagdiv-type a:hover`) overrode the button's
+  own `text-decoration: none`, so the secondary Download action turned into
+  plain underlined text on hover. The button now keeps its text style in the
+  hover, focus, active and visited states, and gets a subtle fill plus an ink
+  border on hover.
+
 ## [2.0.2] — 2026-11-25
 
 ### Added
