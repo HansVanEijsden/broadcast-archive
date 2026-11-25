@@ -125,6 +125,33 @@ $second      = BroadcastArchive\Feed::parse( $xml, 'Salland1', $timezone, 'nl-NL
 $second_ids  = array_column( $second['items'], 'id' );
 same( $ids, $second_ids, 'Episode ids are stable across parses' );
 
+// Feeds without a <guid> that reuse the same enclosure URL every week (for
+// example dir2cast radio-hour archives) must still give each broadcast a
+// distinct id, otherwise resume positions leak into the next week.
+$reused_url_xml = '<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+	<channel>
+		<title>Reused URL</title>
+		<item>
+			<title>Ochtendshow - 24 november 2026 (09:00 - 10:00)</title>
+			<enclosure url="https://archive.example/hour.m4a" type="audio/mp4" length="1000" />
+		</item>
+		<item>
+			<title>Ochtendshow - 17 november 2026 (09:00 - 10:00)</title>
+			<enclosure url="https://archive.example/hour.m4a" type="audio/mp4" length="1000" />
+		</item>
+	</channel>
+</rss>';
+
+$reused = BroadcastArchive\Feed::parse( $reused_url_xml, 'Salland1', $timezone, 'nl-NL' );
+same( 2, $reused['count'], 'Reused-URL feed parsed' );
+$reused_ids = array_column( $reused['items'], 'id' );
+same( 2, count( array_unique( $reused_ids ) ), 'Same enclosure URL in different weeks gets distinct episode ids' );
+
+$reused_again = BroadcastArchive\Feed::parse( $reused_url_xml, 'Salland1', $timezone, 'nl-NL' );
+same( $reused_ids, array_column( $reused_again['items'], 'id' ), 'Reused-URL episode ids are stable across parses' );
+
+
 $atom = BroadcastArchive\Feed::parse(
 	(string) file_get_contents( __DIR__ . '/fixtures/atom.xml' ),
 	'Example FM',

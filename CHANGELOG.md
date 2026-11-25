@@ -4,6 +4,18 @@ All notable changes to Broadcast Archive are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [2.0.1] — 2026-11-25
+
+### Fixed
+
+- **Episode ids for feeds that reuse an enclosure URL every week.** Some feeds
+  (for example dir2cast radio-hour archives that always serve
+  `wednesday_17-18.m4a`) replace the file behind the same URL with a new
+  broadcast. The fallback episode id is now derived from the URL *and* the
+  parsed broadcast start, so resume positions, the "continue listening" bar and
+  deep links stay with the episode they belong to instead of leaking into the
+  next week's broadcast. Feeds with a `<guid>` are unchanged.
+
 ## [2.0.0] — 2026-11-25
 
 Complete rewrite of the original `salland1-uitzending-gemist` plugin.

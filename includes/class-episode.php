@@ -202,7 +202,19 @@ final class Episode {
 		$id_source = (string) ( $raw['guid'] ?? '' );
 
 		if ( '' === $id_source ) {
+			// Some feeds reuse the same enclosure URL every week. dir2cast
+			// archives are a common example: the live folder always contains
+			// e.g. "wednesday_17-18.m4a", which is replaced with a new episode
+			// every week. Including the broadcast start keeps resume positions
+			// and deep links attached to the episode they belong to instead of
+			// leaking into next week's broadcast.
 			$id_source = $audio;
+
+			if ( null !== $start ) {
+				$id_source .= '#' . $start->format( DATE_ATOM );
+			} elseif ( '' !== $title ) {
+				$id_source .= '#' . $title;
+			}
 		}
 
 		$id = substr( hash( 'sha256', $id_source ), 0, 16 );
