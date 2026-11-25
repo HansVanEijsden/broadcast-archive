@@ -4,6 +4,20 @@ All notable changes to Broadcast Archive are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [2.2.0] — 2026-11-25
+
+### Added
+
+- **Shared bottom player for site hubs.** A new `window.BroadcastArchivePlayer`
+  API and a player-only Archive mode let a hub open the same persistent
+  transport from its own recent-episode rows. No second audio element, no
+  duplicate player chrome.
+- **`enqueue_player_assets()`** on the plugin instance, so a site-specific hub
+  can load the shared player without rendering the archive shortcode.
+- The transport now follows the station accent (`BroadcastArchiveConfig.accent`)
+  and dispatches `ba:player-state` events so host lists can reflect play,
+  pause, end and close.
+
 ## [2.1.0] — 2026-11-25
 
 ### Added

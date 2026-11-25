@@ -71,6 +71,16 @@ old the cached copy is.
   (dir2cast, Podcast Generator, PowerPress and most podcast feeds qualify)
 - The archive host must be reachable over HTTPS from the WordPress server
 
+## Shared player
+
+The archive page owns the persistent bottom player, but the same transport can
+be used by a site-specific hub without loading the archive list. The
+`window.BroadcastArchivePlayer.play(item)` API opens the shared player, and
+`BroadcastArchive\Plugin::instance()->enqueue_player_assets()` makes the
+assets available on the host page. The archive page itself keeps its own
+`Archive` instance and transport; both use the same component and audio element
+per page.
+
 ## Installation
 
 1. [Download the latest release](https://github.com/HansVanEijsden/broadcast-archive/releases/latest)

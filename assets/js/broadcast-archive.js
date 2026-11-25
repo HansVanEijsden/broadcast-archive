@@ -372,8 +372,9 @@
    * Archive instance.
    * ------------------------------------------------------------------ */
 
-  function Archive(root) {
+  function Archive(root, options) {
     this.root = root;
+    this.playerOnly = !!(options && options.playerOnly);
     this.uid = Math.random().toString(36).slice(2, 8);
     this.perPage = Math.max(6, Math.min(100, parseInt(root.getAttribute('data-ba-per-page'), 10) || 24));
     this.station = root.getAttribute('data-ba-station') || cfg.station || '';
@@ -414,6 +415,14 @@
   }
 
   Archive.prototype.init = function () {
+    if (this.playerOnly) {
+      this.statusEl = el('p', { class: 'ba-sr-only', role: 'status' });
+      document.body.appendChild(this.statusEl);
+      this.buildTransport();
+      this.bindGlobal();
+      return;
+    }
+
     this.buildShell();
     this.buildTransport();
     this.bindGlobal();
@@ -697,6 +706,15 @@
 
     this.transport.setAttribute('aria-label', L.player || '');
     this.transport.style.setProperty('--ba-progress', '0%');
+
+    var accent = this.root.style.getPropertyValue('--ba-accent').trim();
+    if (!accent && cfg.accent) {
+      accent = cfg.accent;
+    }
+    if (accent) {
+      this.transport.style.setProperty('--ba-accent', accent);
+      this.transport.style.setProperty('--ba-accent-ink', accent);
+    }
 
     this.transport.addEventListener('keydown', function (event) {
       if (event.key === 'Escape') {
@@ -1277,6 +1295,10 @@
   };
 
   Archive.prototype.renderResume = function () {
+    if (!this.resumeSlot) {
+      return;
+    }
+
     var self = this;
     var item = this.items.find(function (candidate) {
       return candidate.id === self.lastId;
@@ -1387,6 +1409,19 @@
 
   /* ----------------------------- playback ----------------------------- */
 
+  Archive.prototype.notifyPlayerState = function (state) {
+    document.dispatchEvent(new CustomEvent('ba:player-state', {
+      detail: {
+        state: state,
+        id: this.playingId,
+        playing: this.playing,
+        ended: this.ended,
+        error: this.audioError,
+        item: this.currentItem()
+      }
+    }));
+  };
+
   Archive.prototype.ensureAudio = function () {
     if (this.audio) {
       return this.audio;
@@ -1423,12 +1458,14 @@
       self.audioError = false;
       self.syncTransport();
       self.syncPlayState();
+      self.notifyPlayerState('play');
     });
 
     audio.addEventListener('pause', function () {
       self.playing = false;
       self.syncPlayState();
       self.rememberProgress();
+      self.notifyPlayerState('pause');
     });
 
     audio.addEventListener('timeupdate', function () {
@@ -1456,6 +1493,7 @@
       self.syncPlayState();
       self.rememberProgress();
       self.announce(L.ended || '');
+      self.notifyPlayerState('ended');
     });
 
     audio.addEventListener('error', function () {
@@ -1463,6 +1501,7 @@
       self.playing = false;
       self.syncPlayState();
       self.announce(L.playbackError || '');
+      self.notifyPlayerState('error');
     });
 
     this.audio = audio;
@@ -1661,6 +1700,7 @@
     this.updateBodyClass();
     this.syncRows();
     this.renderResume();
+    this.notifyPlayerState('close');
 
     this.closeTimer = window.setTimeout(function () {
       if (self.transport && !self.transport.classList.contains('is-open')) {
@@ -1673,7 +1713,7 @@
       var restoreButton = restoreRow ? restoreRow.querySelector('.ba-episode__play') : null;
 
       if (!restoreButton || !document.contains(restoreButton)) {
-        restoreButton = this.listEl.querySelector('.ba-episode__play');
+        restoreButton = this.listEl ? this.listEl.querySelector('.ba-episode__play') : null;
       }
 
       if (restoreButton) {
@@ -2140,9 +2180,82 @@
     });
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', boot);
-  } else {
-    boot();
+  /* ---------------------------------------------------------------------
+   * Shared player API for site-specific hubs.
+   *
+   * The archive page keeps its own Archive instance; a hub can create a
+   * player-only instance with the same transport, audio element and resume
+   * storage, so an episode opens the familiar bottom bar without loading the
+   * archive list.
+   * ------------------------------------------------------------------ */
+
+  var sharedPlayer = null;
+
+  function normalizePlayerItem(item) {
+    var title = item && (item.show || item.title) ? String(item.show || item.title) : '';
+
+    return {
+      id: String(item.id || item.audio || ''),
+      show: title,
+      title: title,
+      presenter: item.presenter ? String(item.presenter) : '',
+      date: item.date ? String(item.date) : '',
+      time: item.time ? String(item.time) : '',
+      duration: Number(item.duration) || 0,
+      audio: String(item.audio || ''),
+      image: item.image ? String(item.image) : '',
+      fallback: item.fallback ? String(item.fallback) : '',
+      description: item.description ? String(item.description) : '',
+      playlist: Array.isArray(item.playlist) ? item.playlist : []
+    };
   }
+
+  function getSharedPlayer() {
+    if (sharedPlayer) {
+      return sharedPlayer;
+    }
+
+    var root = document.createElement('div');
+    root.className = 'ba';
+    root.setAttribute('data-ba-station', cfg.station || '');
+    root.setAttribute('data-ba-search', '0');
+    root.setAttribute('data-ba-programs', '0');
+    root.setAttribute('data-ba-playlist', '0');
+    root.setAttribute('data-ba-download', cfg.downloadEnabled === false ? '0' : '1');
+    root.setAttribute('data-ba-per-page', '24');
+    root.style.setProperty('--ba-accent', cfg.accent || '#e50526');
+
+    sharedPlayer = new Archive(root, { playerOnly: true });
+    sharedPlayer.init();
+
+    return sharedPlayer;
+  }
+
+  window.BroadcastArchivePlayer = {
+    play: function (item) {
+      if (!item || !item.audio) {
+        return false;
+      }
+
+      var player = getSharedPlayer();
+      var normalized = normalizePlayerItem(item);
+
+      if (!normalized.audio) {
+        return false;
+      }
+
+      player.items = [normalized];
+      player.startItem(normalized);
+
+      return true;
+    },
+    close: function () {
+      if (sharedPlayer) {
+        sharedPlayer.closeTransport();
+      }
+    },
+    getInstance: function () {
+      return sharedPlayer;
+    }
+  };
 })();

@@ -185,6 +185,18 @@ final class Plugin {
 	}
 
 	/**
+	 * Enqueue the shared player without requiring the archive shortcode.
+	 *
+	 * Used by site-specific hubs so their recent-episode rows can open the
+	 * same bottom transport as the archive page.
+	 *
+	 * @return void
+	 */
+	public function enqueue_player_assets(): void {
+		$this->enqueue_assets();
+	}
+
+	/**
 	 * Build the global configuration object for the front end.
 	 *
 	 * Deliberately contains no nonces and no per-visitor values: the markup and
@@ -202,6 +214,7 @@ final class Plugin {
 			'locale'        => $locale,
 			'isRtl'         => is_rtl(),
 			'station'       => Settings::station_name(),
+			'accent'        => Settings::accent_color(),
 			'placeholder'   => Settings::placeholder_url(),
 			'downloadEnabled' => (bool) Settings::option( 'download_enabled', 1 ),
 			'showPlaylist'  => (bool) Settings::option( 'show_playlist', 1 ),
