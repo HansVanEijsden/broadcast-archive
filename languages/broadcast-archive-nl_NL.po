@@ -1,0 +1,428 @@
+# Copyright (C) 2026 Hans van Eijsden Consultancy
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Broadcast Archive 2.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/HansVanEijsden/broadcast-archive/issues\n"
+"POT-Creation-Date: 2026-11-25 00:00+0000\n"
+"PO-Revision-Date: 2026-11-25 17:00+0100\n"
+"Last-Translator: Hans van Eijsden <hans@hansvaneijsden.nl>\n"
+"Language-Team: Dutch\n"
+"Language: nl-NL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: tools/i18n.py\n"
+"X-Domain: broadcast-archive\n"
+
+#: includes/class-plugin.php:226
+msgid "%1$s hr %2$s min"
+msgstr "%1$s u %2$s min"
+
+#: includes/class-settings.php:401
+msgid "%d broadcasts in the last fetch."
+msgstr "%d uitzendingen bij de laatste ophaal."
+
+#: includes/class-plugin.php:200
+msgid "%s broadcasts"
+msgstr "%s uitzendingen"
+
+#: includes/class-plugin.php:224
+msgid "%s hr"
+msgstr "%s uur"
+
+#: includes/class-plugin.php:225
+msgid "%s min"
+msgstr "%s min"
+
+#: includes/class-plugin.php:201
+msgid "1 broadcast"
+msgstr "1 uitzending"
+
+#: includes/class-settings.php:443
+msgid "Accent colour"
+msgstr "Accentkleur"
+
+#: includes/class-settings.php:395
+msgid "Add the URL of the podcast feed below."
+msgstr "Voeg hieronder de URL van de podcastfeed toe."
+
+#: includes/class-plugin.php:199
+msgid "All days"
+msgstr "Alle dagen"
+
+#: includes/class-plugin.php:197
+msgid "All programmes"
+msgstr "Alle programma's"
+
+#: includes/class-settings.php:516
+msgid "Allow visitors to download broadcasts"
+msgstr "Bezoekers mogen uitzendingen downloaden"
+
+#: includes/class-plugin.php:217
+msgid "Back 15 seconds"
+msgstr "15 seconden terug"
+
+#: includes/class-settings.php:52 includes/class-settings.php:53 includes/class-settings.php:387
+msgid "Broadcast Archive"
+msgstr "Broadcast Archive"
+
+#: includes/class-shortcode.php:146
+msgid "Broadcast Archive is active, but no feed URL has been configured yet."
+msgstr "Broadcast Archive is actief, maar er is nog geen feed-URL ingesteld."
+
+#: includes/class-settings.php:479
+msgid "Broadcasts per page"
+msgstr "Uitzendingen per pagina"
+
+#: includes/class-settings.php:419
+msgid "Clear feed cache"
+msgstr "Feedcache legen"
+
+#: includes/class-plugin.php:191
+msgid "Clear filters"
+msgstr "Filters wissen"
+
+#: includes/class-plugin.php:194
+msgid "Clear search"
+msgstr "Zoekopdracht wissen"
+
+#: includes/class-plugin.php:216
+msgid "Close player"
+msgstr "Speler sluiten"
+
+#: includes/class-shortcode.php:147
+msgid "Configure the feed"
+msgstr "Feed instellen"
+
+#: includes/class-plugin.php:213
+msgid "Continue listening"
+msgstr "Verder luisteren"
+
+#: includes/class-plugin.php:187
+msgid "Could not load the broadcasts"
+msgstr "Kan de uitzendingen niet laden"
+
+#: includes/class-settings.php:450
+msgid "Date locale"
+msgstr "Datumtaal"
+
+#: includes/class-plugin.php:198
+msgid "Day"
+msgstr "Dag"
+
+#: includes/class-settings.php:476
+msgid "Display"
+msgstr "Weergave"
+
+#: includes/class-plugin.php:210
+msgid "Download"
+msgstr "Downloaden"
+
+#: includes/class-settings.php:514
+msgid "Downloads"
+msgstr "Downloads"
+
+#: includes/class-rest-controller.php:118
+msgid "Downloads are disabled."
+msgstr "Downloads zijn uitgeschakeld."
+
+#: includes/class-settings.php:521
+msgid "Extra download hosts"
+msgstr "Extra hosts voor downloads"
+
+#: includes/class-settings.php:495
+msgid "Fallback artwork"
+msgstr "Terugvalafbeelding"
+
+#: includes/class-settings.php:506
+msgid "Feed cache"
+msgstr "Feedcache"
+
+#: includes/class-settings.php:393
+msgid "Feed status"
+msgstr "Feedstatus"
+
+#: includes/class-settings.php:429
+msgid "Feed URL"
+msgstr "Feed-URL"
+
+#: includes/class-settings.php:517
+msgid "Files are streamed through this site so the download gets a readable file name."
+msgstr "Bestanden lopen via deze site, zodat de download een leesbare bestandsnaam krijgt."
+
+#: includes/class-plugin.php:218
+msgid "Forward 15 seconds"
+msgstr "15 seconden vooruit"
+
+#: includes/class-plugin.php:209
+msgid "Hide details"
+msgstr "Details verbergen"
+
+#: includes/class-settings.php:510
+msgid "How long the parsed feed is reused before the archive is asked again. Visitors never wait for the archive."
+msgstr "Hoe lang de verwerkte feed wordt hergebruikt voordat het archief opnieuw wordt bevraagd. Bezoekers wachten nooit op het archief."
+
+#: includes/class-settings.php:485
+msgid "Interface"
+msgstr "Interface"
+
+#: includes/class-settings.php:457
+msgid "Language used for weekday and month names, e.g. nl-NL or en-GB. Empty uses the site locale (%s)."
+msgstr "Taal voor weekdag- en maandnamen, bijvoorbeeld nl-NL of en-GB. Leeg gebruikt de sitetaal (%s)."
+
+#: includes/class-settings.php:411
+msgid "Last fetched %s ago."
+msgstr "Laatst opgehaald: %s geleden."
+
+#: includes/class-plugin.php:202
+msgid "Load more"
+msgstr "Meer laden"
+
+#: includes/class-plugin.php:203
+msgid "Load more (%s remaining)"
+msgstr "Meer laden (%s resterend)"
+
+#: includes/class-plugin.php:186 includes/class-shortcode.php:125
+msgid "Loading broadcasts…"
+msgstr "Uitzendingen laden…"
+
+#: includes/class-settings.php:509
+msgid "minutes"
+msgstr "minuten"
+
+#: includes/class-feed.php:84
+msgid "No archive feed has been configured yet."
+msgstr "Er is nog geen archieffeed ingesteld."
+
+#: includes/class-plugin.php:190
+msgid "No broadcasts match these filters"
+msgstr "Geen uitzendingen gevonden voor deze filters"
+
+#: includes/class-settings.php:395
+msgid "No feed configured yet."
+msgstr "Nog geen feed ingesteld."
+
+#: includes/class-plugin.php:195
+msgid "Now playing: %s"
+msgstr "Nu te beluisteren: %s"
+
+#: includes/class-shortcode.php:128
+msgid "Open the archive"
+msgstr "Open het archief"
+
+#: includes/class-settings.php:535
+msgid "Optional attributes: per_page=\"24\", station=\"Salland1\", accent=\"#e50526\", search=\"1\", programs=\"1\", playlist=\"1\", download=\"1\"."
+msgstr "Optionele attributen: per_page=\"24\", station=\"Salland1\", accent=\"#e50526\", search=\"1\", programs=\"1\", playlist=\"1\", download=\"1\"."
+
+#: includes/class-settings.php:524
+msgid "Optional. One host per line, for audio served from a CDN instead of the feed host. Everything else is rejected."
+msgstr "Optioneel. Eén host per regel, voor audio van een CDN in plaats van de feedhost. Al het andere wordt geweigerd."
+
+#: includes/class-plugin.php:205
+msgid "Pause"
+msgstr "Pauzeren"
+
+#: includes/class-plugin.php:207
+msgid "Pause “%s”"
+msgstr "“%s” pauzeren"
+
+#: includes/class-settings.php:503
+msgid "Performance and downloads"
+msgstr "Prestaties en downloads"
+
+#: includes/class-plugin.php:204
+msgid "Play"
+msgstr "Afspelen"
+
+#: includes/class-plugin.php:222
+msgid "Play again"
+msgstr "Opnieuw afspelen"
+
+#: includes/class-plugin.php:206
+msgid "Play “%s”"
+msgstr "“%s” afspelen"
+
+#: includes/class-plugin.php:219
+msgid "Playback position"
+msgstr "Afspeelpositie"
+
+#: includes/class-plugin.php:215
+msgid "Player"
+msgstr "Speler"
+
+#: includes/class-plugin.php:211
+msgid "Playlist"
+msgstr "Speellijst"
+
+#: includes/class-plugin.php:188
+msgid "Please check your connection and try again."
+msgstr "Controleer je verbinding en probeer het opnieuw."
+
+#: includes/class-plugin.php:212
+msgid "Presented by %s"
+msgstr "Gepresenteerd door %s"
+
+#: includes/class-plugin.php:196
+msgid "Programme"
+msgstr "Programma"
+
+#: includes/class-plugin.php:214
+msgid "Resume at %s"
+msgstr "Ga verder bij %s"
+
+#: includes/class-settings.php:432
+msgid "RSS 2.0 or Atom feed of the station archive. The feed host is automatically allowed for downloads."
+msgstr "RSS 2.0- of Atom-feed van het stationarchief. De feedhost wordt automatisch toegestaan voor downloads."
+
+#: includes/class-plugin.php:192
+msgid "Search broadcasts"
+msgstr "Uitzendingen zoeken"
+
+#: includes/class-plugin.php:193
+msgid "Search programme, date or title"
+msgstr "Zoek op programma, datum of titel"
+
+#: includes/class-settings.php:85
+msgid "Settings"
+msgstr "Instellingen"
+
+#: includes/class-settings.php:532
+msgid "Shortcode"
+msgstr "Shortcode"
+
+#: includes/class-plugin.php:208
+msgid "Show details"
+msgstr "Details tonen"
+
+#: includes/class-settings.php:490
+msgid "Show playlists from the description"
+msgstr "Speellijsten uit de beschrijving tonen"
+
+#: includes/class-settings.php:489
+msgid "Show the programme filter"
+msgstr "Programmafilter tonen"
+
+#: includes/class-settings.php:488
+msgid "Show the search field"
+msgstr "Zoekveld tonen"
+
+#: includes/class-settings.php:439
+msgid "Shown in the player and used to clean presenter names. Defaults to the site title."
+msgstr "Getoond in de speler en gebruikt om presentatienamen op te schonen. Standaard de sitetitel."
+
+#: includes/class-settings.php:498
+msgid "Shown when a broadcast has no image of its own."
+msgstr "Getoond als een uitzending geen eigen afbeelding heeft."
+
+#: includes/class-settings.php:426
+msgid "Station"
+msgstr "Station"
+
+#: includes/class-settings.php:436
+msgid "Station name"
+msgstr "Stationsnaam"
+
+#: includes/class-feed.php:232
+msgid "The archive feed contains no broadcasts."
+msgstr "De archieffeed bevat geen uitzendingen."
+
+#: includes/class-feed.php:163
+msgid "The archive feed contains no playable broadcasts."
+msgstr "De archieffeed bevat geen afspeelbare uitzendingen."
+
+#: includes/class-feed.php:207
+msgid "The archive feed could not be parsed."
+msgstr "De archieffeed kon niet worden verwerkt."
+
+#: includes/class-feed.php:194
+msgid "The archive feed uses an unsupported document type."
+msgstr "De archieffeed gebruikt een niet-ondersteund documenttype."
+
+#: includes/class-feed.php:540
+msgid "The archive is temporarily unavailable. Please try again in a moment."
+msgstr "Het archief is tijdelijk niet bereikbaar. Probeer het zo meteen opnieuw."
+
+#: includes/class-feed.php:153
+msgid "The archive response is too large to process."
+msgstr "De archieffeed is te groot om te verwerken."
+
+#: includes/class-feed.php:149 includes/class-feed.php:190
+msgid "The archive returned an empty response."
+msgstr "Het archief gaf een leeg antwoord."
+
+#: includes/class-feed.php:140
+msgid "The archive returned HTTP %d."
+msgstr "Het archief gaf HTTP %d."
+
+#: includes/class-shortcode.php:149
+msgid "The broadcast archive is currently unavailable. Please try again later."
+msgstr "Het audioarchief is momenteel niet beschikbaar. Probeer het later opnieuw."
+
+#: includes/class-rest-controller.php:140
+msgid "The download could not be prepared."
+msgstr "De download kon niet worden voorbereid."
+
+#: includes/class-settings.php:382
+msgid "The feed cache has been cleared."
+msgstr "De feedcache is geleegd."
+
+#: includes/class-settings.php:415
+msgid "The feed has not been fetched yet."
+msgstr "De feed is nog niet opgehaald."
+
+#: includes/class-rest-controller.php:179
+msgid "The file is empty."
+msgstr "Het bestand is leeg."
+
+#: includes/class-rest-controller.php:167
+msgid "The file is temporarily unavailable. Please try again later."
+msgstr "Het bestand is tijdelijk niet beschikbaar. Probeer het later opnieuw."
+
+#: includes/class-plugin.php:220
+msgid "This broadcast could not be played."
+msgstr "Deze uitzending kan niet worden afgespeeld."
+
+#: includes/class-plugin.php:221
+msgid "This broadcast has ended."
+msgstr "Deze uitzending is afgelopen."
+
+#: includes/class-rest-controller.php:128
+msgid "This file cannot be downloaded."
+msgstr "Dit bestand kan niet worden gedownload."
+
+#: includes/class-shortcode.php:128
+msgid "This overview needs JavaScript. You can open the archive directly:"
+msgstr "Dit overzicht werkt met JavaScript. Je kunt het archief ook direct openen:"
+
+#: includes/class-settings.php:389
+msgid "This plugin turns any podcast or archive feed into a listen-again page. Add the shortcode [broadcast_archive] to a page and configure the station below."
+msgstr "Deze plugin maakt van elke podcast- of archieffeed een uitzending-gemist-pagina. Zet de shortcode [broadcast_archive] op een pagina en stel hieronder het station in."
+
+#: includes/class-settings.php:465
+msgid "Timezone"
+msgstr "Tijdzone"
+
+#: includes/class-settings.php:471
+msgid "Timezone of the broadcast times written in the feed titles."
+msgstr "Tijdzone van de uitzendtijden in de feedtitels."
+
+#: includes/class-plugin.php:189
+msgid "Try again"
+msgstr "Opnieuw proberen"
+
+#: includes/class-plugin.php:223
+msgid "Unknown date"
+msgstr "Onbekende datum"
+
+#: includes/class-settings.php:468
+msgid "Use the site timezone"
+msgstr "Gebruik de tijdzone van de site"
+
+#: includes/class-settings.php:446
+msgid "Used for play buttons, the current position and focus rings."
+msgstr "Gebruikt voor afspeelknoppen, de huidige positie en focusranden."
+
+#: includes/class-settings.php:341
+msgid "You are not allowed to do this."
+msgstr "Je hebt hier geen rechten voor."

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+  <title>Example FM Archive</title>
+  <logo>https://example.org/logo.png</logo>
+  <entry>
+    <title>Morning Show - 25 November 2026 (08:00 - 09:00)</title>
+    <id>tag:example.org,2026:morning-1</id>
+    <published>2026-11-25T08:00:00+01:00</published>
+    <summary>Hello &amp; welcome to the morning show.</summary>
+    <link rel="enclosure" href="https://example.org/morning.m4a" type="audio/mp4" length="100000"/>
+    <itunes:author>Example FM: Chris</itunes:author>
+    <itunes:duration>59:00</itunes:duration>
+  </entry>
+</feed>

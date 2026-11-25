@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-25T17:15:00+01:00",
+  "title": "Design System: Broadcast Archive",
+  "extensions": {
+    "colorMeta": {
+      "accent": {
+        "role": "primary",
+        "displayName": "Playback Red",
+        "canonical": "#e50526",
+        "tonalRamp": [
+          "#5e0210",
+          "#8c0319",
+          "#b3041e",
+          "#d90422",
+          "#e50526",
+          "#f43b55",
+          "#f97a8c",
+          "#fdd5db"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#14161a",
+        "tonalRamp": [
+          "#000000",
+          "#0a0b0d",
+          "#14161a",
+          "#2a2e35",
+          "#454b55",
+          "#6b7280",
+          "#a3a9b2",
+          "#e5e7eb"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Studio Grey",
+        "canonical": "#5a6371",
+        "tonalRamp": [
+          "#2c3138",
+          "#3a414b",
+          "#4a5360",
+          "#5a6371",
+          "#7c8492",
+          "#a5abb5",
+          "#cdd1d7",
+          "#eef0f3"
+        ]
+      },
+      "surface-alt": {
+        "role": "neutral",
+        "displayName": "Paper Tint",
+        "canonical": "#f6f7f9",
+        "tonalRamp": [
+          "#d9dde2",
+          "#e5e8eb",
+          "#eef0f3",
+          "#f2f4f6",
+          "#f6f7f9",
+          "#f9fafb",
+          "#fcfcfd",
+          "#ffffff"
+        ]
+      },
+      "transport-bg": {
+        "role": "neutral",
+        "displayName": "Transport Black",
+        "canonical": "#14161a",
+        "tonalRamp": [
+          "#000000",
+          "#0a0b0d",
+          "#14161a",
+          "#20242b",
+          "#2e333c",
+          "#4b515c",
+          "#8a919d",
+          "#e6e8ec"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "body": {
+        "displayName": "Body",
+        "purpose": "Inherited host theme sans; all row copy."
+      },
+      "title": {
+        "displayName": "Row title",
+        "purpose": "Programme name in a schedule row."
+      },
+      "meta": {
+        "displayName": "Meta",
+        "purpose": "Time, presenter, duration and excerpt."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Short uppercase functional labels."
+      },
+      "transport-title": {
+        "displayName": "Transport title",
+        "purpose": "Now-playing programme in the persistent player."
+      }
+    },
+    "shadows": [
+      {
+        "name": "focus-ring",
+        "value": "0 0 0 3px rgba(229,5,38,.15)",
+        "purpose": "Search and select focus halo on light surfaces."
+      },
+      {
+        "name": "transport-thumb",
+        "value": "0 0 0 3px rgba(229,5,38,.35)",
+        "purpose": "Scrubber thumb halo on the dark transport."
+      }
+    ],
+    "motion": [
+      {
+        "name": "transport-rise",
+        "value": "260ms cubic-bezier(0.2, 0.8, 0.25, 1)",
+        "purpose": "Transport slides up when playback starts."
+      },
+      {
+        "name": "state-fade",
+        "value": "150ms ease",
+        "purpose": "Hover, border and background changes."
+      },
+      {
+        "name": "details-reveal",
+        "value": "160ms ease-out",
+        "purpose": "Expanded episode fades down into place."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "narrow",
+        "value": "360px"
+      },
+      {
+        "name": "stack-toolbar",
+        "value": "560px"
+      },
+      {
+        "name": "mobile-row",
+        "value": "680px"
+      },
+      {
+        "name": "transport-two-row",
+        "value": "760px"
+      },
+      {
+        "name": "tablet",
+        "value": "900px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Play or download call to action inside an expanded episode.",
+      "html": "<button class=\"ds-btn ds-btn--primary\" type=\"button\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M8 5.2v13.6L19 12z\" fill=\"currentColor\"/></svg> Afspelen</button>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:40px;padding:0 14px;border:1px solid transparent;border-radius:8px;font:600 13.5px/1 system-ui,sans-serif;text-decoration:none;cursor:pointer;transition:background .15s,border-color .15s}.ds-btn--primary{background:#e50526;border-color:#e50526;color:#fff}.ds-btn--primary:hover{background:#b3041e;border-color:#b3041e}.ds-btn:focus-visible{outline:2px solid #e50526;outline-offset:2px}"
+    },
+    {
+      "name": "Ghost button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary action, such as downloading an episode.",
+      "html": "<a class=\"ds-btn ds-btn--ghost\" href=\"#\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 3v12\"/><path d=\"m7 10 5 5 5-5\"/><path d=\"M5 20h14\"/></svg> Downloaden <span style=\"color:#5a6371;font-weight:500\">15,5 MB</span></a>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:40px;padding:0 14px;border:1px solid transparent;border-radius:8px;font:600 13.5px/1 system-ui,sans-serif;text-decoration:none;cursor:pointer;transition:background .15s,border-color .15s}.ds-btn--ghost{background:#fff;border-color:#c9ced5;color:#191c21}.ds-btn--ghost:hover{border-color:#14161a}.ds-btn:focus-visible{outline:2px solid #e50526;outline-offset:2px}"
+    },
+    {
+      "name": "Search field",
+      "kind": "input",
+      "refersTo": "search-input",
+      "description": "Search across programme, title, description and playlist.",
+      "html": "<label class=\"ds-search\"><span class=\"ds-search__icon\"><svg width=\"17\" height=\"17\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"m20 20-3.4-3.4\"/></svg></span><input type=\"search\" placeholder=\"Zoek op programma, datum of titel\" aria-label=\"Uitzendingen zoeken\" /></label>",
+      "css": ".ds-search{position:relative;display:flex;align-items:center;width:360px;max-width:100%}.ds-search__icon{position:absolute;left:14px;display:flex;color:#5a6371}.ds-search input{width:100%;height:44px;padding:0 42px 0 40px;border:1px solid #c9ced5;border-radius:8px;background:#fff;color:#191c21;font:400 15px/1 system-ui,sans-serif;appearance:none}.ds-search input::placeholder{color:#69717e;opacity:1}.ds-search input:hover{border-color:#aeb5bf}.ds-search input:focus{outline:none;border-color:#e50526;box-shadow:0 0 0 3px rgba(229,5,38,.15)}"
+    },
+    {
+      "name": "Day chip",
+      "kind": "chip",
+      "refersTo": "day-chip",
+      "description": "Date filter; the selected chip inverts to ink, not to red.",
+      "html": "<button class=\"ds-chip\" type=\"button\" aria-pressed=\"false\">Wo 25 nov</button> <button class=\"ds-chip is-active\" type=\"button\" aria-pressed=\"true\">Alle dagen</button>",
+      "css": ".ds-chip{height:38px;padding:6px 13px;border:1px solid #c9ced5;border-radius:999px;background:#fff;color:#191c21;font:600 13px/1 system-ui,sans-serif;white-space:nowrap;cursor:pointer;transition:background .15s,border-color .15s,color .15s}.ds-chip:hover{border-color:#14161a}.ds-chip.is-active{background:#14161a;border-color:#14161a;color:#fff}.ds-chip:focus-visible{outline:2px solid #e50526;outline-offset:2px}"
+    },
+    {
+      "name": "Episode row",
+      "kind": "custom",
+      "refersTo": "episode-play",
+      "description": "The schedule row: play, time rail, programme and details. Flat, separated by a hairline.",
+      "html": "<div class=\"ds-row\"><button class=\"ds-row__play is-playing\" aria-label=\"Pauzeren\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M8 5.2v13.6L19 12z\" fill=\"currentColor\"/></svg></button><div class=\"ds-row__time\"><span>16:00</span><span>17:00</span></div><div class=\"ds-row__body\"><p class=\"ds-row__title\">Goedemiddag Salland</p><p class=\"ds-row__meta\">1 uur</p><p class=\"ds-row__excerpt\">Elke werkdag de beste muziek allertijds.</p></div><button class=\"ds-row__more\" aria-label=\"Details tonen\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"/></svg></button></div>",
+      "css": ".ds-row{display:grid;grid-template-columns:3rem 5.25rem minmax(0,1fr) 2.25rem;align-items:center;gap:12px;padding:8px 6px;border-bottom:1px solid #e2e5e9;font:400 15px/1.45 system-ui,sans-serif;color:#191c21}.ds-row:hover{background:#f6f7f9;border-radius:8px}.ds-row__play{display:grid;place-items:center;width:42px;height:42px;padding:0;border:1px solid #c9ced5;border-radius:50%;background:#fff;color:#14161a;cursor:pointer}.ds-row__play.is-playing{background:#e50526;border-color:#e50526;color:#fff}.ds-row__time{display:flex;flex-direction:column;line-height:1.2;font-variant-numeric:tabular-nums}.ds-row__time span:first-child{font-size:14px;font-weight:600}.ds-row__time span:last-child{font-size:12px;color:#5a6371}.ds-row__body{min-width:0}.ds-row__title{margin:0;font-size:15px;font-weight:650;line-height:1.32}.ds-row__meta{margin:3px 0 0;color:#5a6371;font-size:12.5px}.ds-row__excerpt{margin:4px 0 0;color:#5a6371;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ds-row__more{display:grid;place-items:center;width:34px;height:34px;border:0;border-radius:8px;background:transparent;color:#5a6371;cursor:pointer}.ds-row__more:hover{background:#eceef1;color:#14161a}"
+    },
+    {
+      "name": "Expanded episode",
+      "kind": "card",
+      "refersTo": "button-ghost",
+      "description": "Inline details: actions, description and the parsed playlist. A tinted panel, not a floating card.",
+      "html": "<div class=\"ds-details\"><p class=\"ds-details__when\">25 november 2026 · 16:00 – 17:00 · 1 uur</p><div class=\"ds-details__actions\"><button class=\"ds-btn ds-btn--primary\" type=\"button\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M8 5.2v13.6L19 12z\" fill=\"currentColor\"/></svg> Afspelen</button><a class=\"ds-btn ds-btn--ghost\" href=\"#\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 3v12\"/><path d=\"m7 10 5 5 5-5\"/><path d=\"M5 20h14\"/></svg> Downloaden</a></div><p class=\"ds-details__desc\">Elke werkdag de beste muziek allertijds.</p><h4 class=\"ds-details__heading\">Speellijst</h4><ol class=\"ds-tracks\"><li><span>16:03</span><strong>Sly Fox</strong> — Let's Go All The Way</li><li><span>16:07</span><strong>Kings Of Leon</strong> — KOYSAR</li></ol></div>",
+      "css": ".ds-details{padding:16px;border:1px solid #e2e5e9;border-radius:10px;background:#f6f7f9;font:400 13.5px/1.45 system-ui,sans-serif;color:#191c21}.ds-details__when{margin:0 0 12px;color:#5a6371;font-size:12px}.ds-details__actions{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}.ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:40px;padding:0 14px;border:1px solid transparent;border-radius:8px;font:600 13.5px/1 system-ui,sans-serif;text-decoration:none;cursor:pointer}.ds-btn--primary{background:#e50526;border-color:#e50526;color:#fff}.ds-btn--ghost{background:#fff;border-color:#c9ced5;color:#191c21}.ds-details__desc{margin:0 0 14px;line-height:1.6}.ds-details__heading{margin:0 0 6px;color:#5a6371;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}.ds-tracks{margin:0;padding:0;list-style:none}.ds-tracks li{display:grid;grid-template-columns:3.5rem minmax(0,1fr);gap:10px;padding:5px 0;border-bottom:1px solid rgba(0,0,0,.05);font-size:13px}.ds-tracks li:last-child{border-bottom:0}.ds-tracks span{color:#5a6371;font-variant-numeric:tabular-nums}.ds-tracks strong{font-weight:650}"
+    },
+    {
+      "name": "Transport",
+      "kind": "custom",
+      "refersTo": "transport",
+      "description": "The signature component: one persistent, dark, full-width player with a red play control.",
+      "html": "<div class=\"ds-transport\"><div class=\"ds-transport__track\"><img src=\"https://archive.salland1.nl/wednesday_15-16.jpg\" alt=\"\" width=\"44\" height=\"44\" /><div><p class=\"ds-transport__title\">Goedemiddag Salland</p><p class=\"ds-transport__meta\">25 nov · 16:00 – 17:00 · 1 uur</p></div></div><div class=\"ds-transport__controls\"><button aria-label=\"15 seconden terug\">↺15</button><button class=\"ds-transport__play\" aria-label=\"Pauzeren\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"7\" y=\"5\" width=\"3.4\" height=\"14\" rx=\"1.2\" fill=\"currentColor\"/><rect x=\"13.6\" y=\"5\" width=\"3.4\" height=\"14\" rx=\"1.2\" fill=\"currentColor\"/></svg></button><button aria-label=\"15 seconden vooruit\">↻15</button></div><div class=\"ds-transport__seek\"><span>1:16</span><div class=\"ds-transport__bar\"><i></i></div><span>1:00:12</span></div><button class=\"ds-transport__close\" aria-label=\"Speler sluiten\">×</button></div>",
+      "css": ".ds-transport{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1.7fr) auto;align-items:center;gap:18px;padding:10px 16px;background:#14161a;color:#f4f5f7;font:400 12.5px/1.4 system-ui,sans-serif;border-top:1px solid rgba(255,255,255,.08)}.ds-transport__track{display:flex;align-items:center;gap:11px;min-width:0}.ds-transport__track img{width:44px;height:44px;border-radius:6px;object-fit:cover}.ds-transport__title{margin:0;font-size:14px;font-weight:650;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ds-transport__meta{margin:1px 0 0;color:#a7aeb9;font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ds-transport__controls{display:flex;align-items:center;gap:6px}.ds-transport__controls button{height:40px;min-width:38px;border:0;border-radius:8px;background:transparent;color:#c3c9d2;cursor:pointer;font:700 9px/1 system-ui,sans-serif}.ds-transport__controls .ds-transport__play{width:46px;height:46px;border-radius:50%;background:#e50526;color:#fff;font-size:0}.ds-transport__seek{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:10px;min-width:0}.ds-transport__seek span{font-variant-numeric:tabular-nums;color:#a7aeb9;font-size:11.5px}.ds-transport__seek span:first-child{color:#fff}.ds-transport__bar{height:4px;border-radius:2px;background:linear-gradient(to right,#e50526 0 12%,#3a3f48 12% 100%)}.ds-transport__bar i{display:block;width:14px;height:14px;margin:-5px 0 0 11%;border-radius:50%;background:#fff;box-shadow:0 0 0 3px rgba(229,5,38,.35)}.ds-transport__close{width:38px;height:38px;border:0;border-radius:8px;background:transparent;color:#c3c9d2;font-size:20px;cursor:pointer}.ds-transport__close:hover{background:rgba(255,255,255,.08);color:#fff}.ds-transport :focus-visible{outline:2px solid #fff;outline-offset:3px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Broadcast Diary",
+    "overview": "This is a schedule you can play, not a media library in a card grid. The day is the section, the time slot is the spine, and a programme is a row you scan the way you scan a printed radio guide. The surface belongs to the station's own newspaper theme: it inherits the type, the page width and the light ground, and adds only structure, hairlines and one dark piece of hardware at the bottom.",
+    "keyCharacteristics": [
+      "Time-first hierarchy: the hour is the largest repeated anchor after the title.",
+      "One transport for the whole surface; no inline duplicate players.",
+      "Station red is reserved for playback, position, primary actions and focus.",
+      "Flat schedule: hairline rules and tonal panels, no card shadows per row.",
+      "Inherited typography; no webfont, no icon font, no external asset service.",
+      "Every pixel is identical for every visitor, so the page can stay cached."
+    ],
+    "rules": [
+      {
+        "name": "The Playback-Only Red Rule",
+        "body": "Red marks playback, current position, the primary action and focus. It is not decoration: no red borders, no red heading rules, no red eyebrows, no second red button competing with play.",
+        "section": "colors"
+      },
+      {
+        "name": "The Dark Hardware Rule",
+        "body": "Only the transport is dark. The page stays light so the plugin reads as part of the station's site, not as a dark media app pasted into it.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tabular Time Rule",
+        "body": "Every time, duration and position uses tabular numerals. The time rail must stay on the same optical column as the digits change from 9:00 to 10:00.",
+        "section": "typography"
+      }
+    ],
+    "dos": [
+      "Do keep the time rail tabular and on one optical column.",
+      "Do keep the page output identical for every visitor: no nonces, no per-user values, no cookies in the shortcode markup.",
+      "Do keep one transport; playback must survive filtering, paging and scrolling.",
+      "Do reserve red for playback, position, primary action and focus.",
+      "Do keep rows flat and separate days with a hairline and 22px of air.",
+      "Do show the time first in the mobile meta line, because the rail is gone."
+    ],
+    "donts": [
+      "Don't turn rows into cards with shadows, or put a cover thumbnail in every hourly row.",
+      "Don't duplicate the player inside the expanded row.",
+      "Don't put a nonce or a user-specific value in cached HTML; that was the original bug.",
+      "Don't use display fonts, all-caps sentences or letter-spaced body copy.",
+      "Don't use red for passive labels, counts, day headings or borders.",
+      "Don't hide the close button behind a site chat widget."
+    ]
+  }
+}

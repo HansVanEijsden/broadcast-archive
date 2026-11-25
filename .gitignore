@@ -1,0 +1,19 @@
+# OS / editor
+.DS_Store
+__MACOSX/
+._*
+*.swp
+*.log
+
+# Dependencies (the plugin has none, but keep a clean tree)
+node_modules/
+vendor/
+
+# Local-only artefacts
+legacy-orig/
+preview/episodes.json
+.impeccable/review/
+.impeccable/config.local.json
+.impeccable/mocks/
+.impeccable/questions/
+.impeccable/hook.cache.json

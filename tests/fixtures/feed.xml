@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+  <channel>
+    <title>Salland1 Uitzending Gemist</title>
+    <link>https://archive.salland1.nl/</link>
+    <description>Gemiste uitzendingen</description>
+    <itunes:image href="https://archive.salland1.nl/channel.jpg"/>
+    <image>
+      <url>https://archive.salland1.nl/channel.jpg</url>
+      <title>Salland1</title>
+    </image>
+
+    <item>
+      <itunes:author>Salland1</itunes:author>
+      <itunes:duration>1:00:12</itunes:duration>
+      <itunes:image href="https://archive.salland1.nl/wednesday_15-16.jpg"/>
+      <title>Goedemiddag Salland - 25 November 2026 (15:00 - 16:00)</title>
+      <pubDate>Wed, 25 Nov 2026 15:02:01 +0000</pubDate>
+      <description><![CDATA[Elke werkdag de beste muziek allertijden.<br />
+<br />
+Afspeellijst:<br />
+15:04 - Krezip - Plug It In &#x26; Turn Me On<br />
+15:08 - Acda en de Munnik - Niets Doen<br />
+15:12 - B 52&#039;s - Love Shack<br />
+15:17 - Sheppard - Sallandschijf - Feels Like Heaven]]></description>
+      <image>https://archive.salland1.nl/wednesday_15-16.jpg</image>
+      <enclosure url="https://archive.salland1.nl/wednesday_15-16.m4a" length="16303506" type="audio/mp4"/>
+    </item>
+
+    <item>
+      <itunes:author>Salland1</itunes:author>
+      <itunes:duration>1:00:00</itunes:duration>
+      <title>De Nachtvlucht - 26 November 2026 (00:00 - 01:00)</title>
+      <pubDate>Thu, 26 Nov 2026 00:02:00 +0000</pubDate>
+      <description>De nacht in met rustige muziek.</description>
+      <enclosure url="https://archive.salland1.nl/thursday_00-01.m4a" length="16000000" type="audio/mp4"/>
+    </item>
+
+    <item>
+      <itunes:author>Salland1</itunes:author>
+      <itunes:duration>1:00:00</itunes:duration>
+      <title>Avond aan de IJssel - 24 November 2026 (23:00 - 00:00)</title>
+      <pubDate>Tue, 24 Nov 2026 23:02:00 +0000</pubDate>
+      <description>Een uur lang muziek en gesprekken.</description>
+      <enclosure url="https://archive.salland1.nl/tuesday_23-00.m4a" length="16000000" type="audio/mp4"/>
+    </item>
+
+    <item>
+      <itunes:author>Salland1: Jane Doe</itunes:author>
+      <itunes:duration>45:30</itunes:duration>
+      <title>Breakfast Show - 24 November 2026 (07:00 - 08:00)</title>
+      <pubDate>Tue, 24 Nov 2026 07:02:00 +0000</pubDate>
+      <description>News, weather and music.</description>
+      <enclosure url="https://archive.salland1.nl/tuesday_07-08.m4a" length="12000000" type="audio/mp4"/>
+    </item>
+
+    <item>
+      <itunes:author>Salland1</itunes:author>
+      <itunes:duration>30:00</itunes:duration>
+      <title>Zondagochtend</title>
+      <pubDate>Mon, 23 Nov 2026 09:30:00 +0100</pubDate>
+      <description>Een rustige start van de dag.</description>
+      <enclosure url="https://archive.salland1.nl/sunday_09-10.m4a" length="8000000" type="audio/mp4"/>
+    </item>
+
+    <item>
+      <itunes:author>Salland1</itunes:author>
+      <itunes:duration>1:30:00</itunes:duration>
+      <title>Late Night - 2026-11-22 (22.00 - 23.30)</title>
+      <pubDate>Sun, 22 Nov 2026 22:02:00 +0000</pubDate>
+      <description>Late night selections.</description>
+      <enclosure url="https://archive.salland1.nl/sunday_22-23.m4a" length="20000000" type="audio/mp4"/>
+    </item>
+
+    <item>
+      <itunes:author>Salland1</itunes:author>
+      <title>Zonder audio - 25 November 2026 (10:00 - 11:00)</title>
+      <pubDate>Wed, 25 Nov 2026 10:02:00 +0000</pubDate>
+      <description>Deze uitzending heeft geen bestand.</description>
+    </item>
+
+    <item>
+      <itunes:author>Salland1</itunes:author>
+      <itunes:duration>1:00:00</itunes:duration>
+      <title>Ochtendshow - 25 November 2026 (09:00 - 10:00)</title>
+      <pubDate>Wed, 25 Nov 2026 09:02:00 +0000</pubDate>
+      <description><![CDATA[<p>Goedemorgen &amp; welkom</p><p>Tweede regel met uitleg.</p>]]></description>
+      <enclosure url="https://archive.salland1.nl/wednesday_09-10.m4a" length="16000000" type="audio/mp4"/>
+    </item>
+  </channel>
+</rss>

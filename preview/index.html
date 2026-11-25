@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="nl">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Uitzending Gemist — plugin preview</title>
+	<link rel="stylesheet" href="../assets/css/broadcast-archive.css">
+	<style>
+		body {
+			margin: 0;
+			background: #eef0f3;
+			color: #111;
+			font-family: Verdana, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+			font-size: 14px;
+			line-height: 1.5;
+		}
+
+		.preview-shell {
+			max-width: 800px;
+			margin: 0 auto;
+			padding: 30px 28px 160px;
+			background: #fff;
+		}
+
+		.preview-crumb {
+			margin: 0 0 6px;
+			color: #666;
+			font-size: 12px;
+		}
+
+		.preview-title {
+			margin: 0 0 18px;
+			font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+			font-size: 24px;
+			font-weight: 400;
+			line-height: 1.3;
+		}
+
+		@media (max-width: 600px) {
+			.preview-shell {
+				padding: 18px 14px 160px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="preview-shell">
+		<p class="preview-crumb">Home / Uitzending Gemist</p>
+		<h1 class="preview-title">Uitzending Gemist</h1>
+
+		<div id="broadcast-archive" class="ba" data-ba-root data-ba-per-page="24" data-ba-station="Salland1" data-ba-search="1" data-ba-programs="1" data-ba-playlist="1" data-ba-download="1" style="--ba-accent:#e50526" aria-busy="true">
+			<div class="ba-skeleton" aria-hidden="true">
+				<div class="ba-skeleton__toolbar">
+					<span class="ba-skeleton__block ba-skeleton__block--search"></span>
+					<span class="ba-skeleton__block ba-skeleton__block--select"></span>
+				</div>
+				<div class="ba-skeleton__days">
+					<span class="ba-skeleton__block ba-skeleton__block--chip"></span>
+					<span class="ba-skeleton__block ba-skeleton__block--chip"></span>
+					<span class="ba-skeleton__block ba-skeleton__block--chip"></span>
+					<span class="ba-skeleton__block ba-skeleton__block--chip"></span>
+				</div>
+				<div class="ba-skeleton__day"></div>
+				<div class="ba-skeleton__row"><span class="ba-skeleton__block ba-skeleton__block--time"></span><span class="ba-skeleton__block ba-skeleton__block--title"></span><span class="ba-skeleton__block ba-skeleton__block--meta"></span></div>
+				<div class="ba-skeleton__row"><span class="ba-skeleton__block ba-skeleton__block--time"></span><span class="ba-skeleton__block ba-skeleton__block--title"></span><span class="ba-skeleton__block ba-skeleton__block--meta"></span></div>
+				<div class="ba-skeleton__row"><span class="ba-skeleton__block ba-skeleton__block--time"></span><span class="ba-skeleton__block ba-skeleton__block--title"></span><span class="ba-skeleton__block ba-skeleton__block--meta"></span></div>
+			</div>
+			<p class="ba-sr-only ba-status" role="status">Uitzendingen laden…</p>
+		</div>
+	</div>
+
+	<script>
+		var previewFail = /(?:^|[?&])fail=1(?:&|$)/.test(location.search);
+
+		window.BroadcastArchiveConfig = {
+			restUrl: previewFail ? 'http://127.0.0.1:8765/missing/' : 'http://127.0.0.1:8765/wp-json/broadcast-archive/v1/',
+			locale: 'nl-NL',
+			isRtl: false,
+			station: 'Salland1',
+			placeholder: '../assets/images/placeholder.svg',
+			downloadEnabled: true,
+			showPlaylist: true,
+			labels: {
+				loading: 'Uitzendingen laden…',
+				loadErrorTitle: 'Kan de uitzendingen niet laden',
+				loadErrorBody: 'Controleer je verbinding en probeer het opnieuw.',
+				retry: 'Opnieuw proberen',
+				emptyTitle: 'Geen uitzendingen gevonden voor deze filters',
+				clearFilters: 'Filters wissen',
+				searchLabel: 'Uitzendingen zoeken',
+				searchPlaceholder: 'Zoek op programma, datum of titel',
+				clearSearch: 'Zoekopdracht wissen',
+				nowPlaying: 'Nu te beluisteren: %s',
+				programLabel: 'Programma',
+				allProgrammes: "Alle programma's",
+				dayLabel: 'Dag',
+				allDays: 'Alle dagen',
+				episodeCount: '%s uitzendingen',
+				episodeCountOne: '1 uitzending',
+				loadMore: 'Meer laden',
+				loadMoreCount: 'Meer laden (%s resterend)',
+				play: 'Afspelen',
+				pause: 'Pauzeren',
+				playItem: '“%s” afspelen',
+				pauseItem: '“%s” pauzeren',
+				showDetails: 'Details tonen',
+				hideDetails: 'Details verbergen',
+				download: 'Downloaden',
+				downloadItem: '“%s” downloaden',
+				playlist: 'Speellijst',
+				presentedBy: 'Gepresenteerd door %s',
+				continueListening: 'Verder luisteren',
+				continueAt: 'Ga verder bij %s',
+				player: 'Speler',
+				closePlayer: 'Speler sluiten',
+				back15: '15 seconden terug',
+				forward15: '15 seconden vooruit',
+				position: 'Afspeelpositie',
+				playbackError: 'Deze uitzending kan niet worden afgespeeld.',
+				ended: 'Deze uitzending is afgelopen.',
+				replay: 'Opnieuw afspelen',
+				unknownDate: 'Onbekende datum',
+				hours: '%s uur',
+				minutes: '%s min',
+				hoursMinutes: '%1$s u %2$s min',
+				unavailable: 'Het audioarchief is momenteel niet beschikbaar. Probeer het later opnieuw.',
+				configure: 'Stel de archieffeed in via Instellingen → Broadcast Archive.',
+				openArchive: 'Open het archief',
+				noScript: 'Dit overzicht werkt met JavaScript. Je kunt het archief ook direct openen:'
+			}
+		};
+
+		// The preview serves a static JSON snapshot instead of the REST route.
+		(function () {
+			var nativeFetch = window.fetch.bind(window);
+
+			window.fetch = function (url, options) {
+				if (!previewFail && String(url).indexOf('/episodes') !== -1) {
+					return nativeFetch('episodes.json', { cache: 'no-store' });
+				}
+
+				return nativeFetch(url, options);
+			};
+		})();
+	</script>
+	<script src="../assets/js/broadcast-archive.js"></script>
+</body>
+</html>
