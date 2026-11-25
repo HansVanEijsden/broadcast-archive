@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "design-system-font",
+        "value": "verdana",
+        "files": [
+          "preview/index.html"
+        ],
+        "createdAt": "2026-11-25T16:42:51.292Z",
+        "reason": "intentional demo: preview harness mirrors the Newspaper theme's Verdana body font; preview is not shipped plugin UI"
+      }
+    ]
+  }
+}
