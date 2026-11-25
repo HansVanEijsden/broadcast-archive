@@ -263,7 +263,8 @@ security error.
 
 **Can I use a CDN for audio?**
 Yes. Add the CDN host under **Extra download hosts**; everything else is
-rejected by the proxy.
+rejected by the proxy. The proxy accepts audio content types, or
+`application/octet-stream` when the URL ends in an audio extension.
 
 **Does it work without JavaScript?**
 The page shows a link to the archive feed instead of the player. The plugin

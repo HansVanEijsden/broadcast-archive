@@ -30,10 +30,6 @@ function broadcast_archive_uninstall_site(): void {
 			$wpdb->esc_like( '_transient_timeout_ba_' ) . '%'
 		)
 	);
-
-	if ( function_exists( 'wp_cache_flush_group' ) ) {
-		wp_cache_flush_group( 'broadcast-archive' );
-	}
 }
 
 if ( is_multisite() ) {

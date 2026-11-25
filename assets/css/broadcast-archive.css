@@ -1333,7 +1333,7 @@ body.ba-transport-open {
 
 @media (max-width: 680px) {
 	.ba .ba-episode__main {
-		grid-template-columns: 3rem minmax(0, 1fr) 2.25rem;
+		grid-template-columns: 3rem minmax(0, 1fr) 2.5rem;
 		gap: 10px;
 		padding-inline: 4px 2px;
 	}
