@@ -2180,6 +2180,39 @@
     });
   }
 
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
+  }
+
+  // Some hosts inject the shortcode after DOMContentLoaded (lazy blocks,
+  // cached fragments, page builders). Retry once and watch for later roots so
+  // the archive never stays on its server-rendered skeleton.
+  window.setTimeout(boot, 0);
+  window.addEventListener('load', boot);
+
+  var bootQueued = false;
+
+  function queueBoot() {
+    if (bootQueued || !('MutationObserver' in window)) {
+      return;
+    }
+
+    bootQueued = true;
+    window.setTimeout(function () {
+      bootQueued = false;
+      boot();
+    }, 60);
+  }
+
+  if ('MutationObserver' in window) {
+    new MutationObserver(queueBoot).observe(document.documentElement, {
+      childList: true,
+      subtree: true
+    });
+  }
+
   /* ---------------------------------------------------------------------
    * Shared player API for site-specific hubs.
    *
