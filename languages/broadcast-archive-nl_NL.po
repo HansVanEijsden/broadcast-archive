@@ -15,7 +15,7 @@ msgstr ""
 "X-Generator: tools/i18n.py\n"
 "X-Domain: broadcast-archive\n"
 
-#: includes/class-plugin.php:255
+#: includes/class-plugin.php:270
 msgid "%1$s hr %2$s min"
 msgstr "%1$s u %2$s min"
 
@@ -23,19 +23,19 @@ msgstr "%1$s u %2$s min"
 msgid "%d broadcasts in the last fetch."
 msgstr "%d uitzendingen bij de laatste ophaal."
 
-#: includes/class-plugin.php:224
+#: includes/class-plugin.php:239
 msgid "%s broadcasts"
 msgstr "%s uitzendingen"
 
-#: includes/class-plugin.php:253
+#: includes/class-plugin.php:268
 msgid "%s hr"
 msgstr "%s uur"
 
-#: includes/class-plugin.php:254
+#: includes/class-plugin.php:269
 msgid "%s min"
 msgstr "%s min"
 
-#: includes/class-plugin.php:225
+#: includes/class-plugin.php:240
 msgid "1 broadcast"
 msgstr "1 uitzending"
 
@@ -47,11 +47,11 @@ msgstr "Accentkleur"
 msgid "Add the URL of the podcast feed below."
 msgstr "Voeg hieronder de URL van de podcastfeed toe."
 
-#: includes/class-plugin.php:223
+#: includes/class-plugin.php:238
 msgid "All days"
 msgstr "Alle dagen"
 
-#: includes/class-plugin.php:221
+#: includes/class-plugin.php:236
 msgid "All programmes"
 msgstr "Alle programma's"
 
@@ -59,7 +59,7 @@ msgstr "Alle programma's"
 msgid "Allow visitors to download broadcasts"
 msgstr "Bezoekers mogen uitzendingen downloaden"
 
-#: includes/class-plugin.php:246
+#: includes/class-plugin.php:261
 msgid "Back 15 seconds"
 msgstr "15 seconden terug"
 
@@ -67,7 +67,7 @@ msgstr "15 seconden terug"
 msgid "Broadcast Archive"
 msgstr "Broadcast Archive"
 
-#: includes/class-plugin.php:111
+#: includes/class-plugin.php:113
 msgid "Broadcast Archive is active, but no feed URL has been configured yet."
 msgstr "Broadcast Archive is actief, maar er is nog geen feed-URL ingesteld."
 
@@ -79,31 +79,31 @@ msgstr "Uitzendingen per pagina"
 msgid "Clear feed cache"
 msgstr "Feedcache legen"
 
-#: includes/class-plugin.php:215
+#: includes/class-plugin.php:230
 msgid "Clear filters"
 msgstr "Filters wissen"
 
-#: includes/class-plugin.php:218
+#: includes/class-plugin.php:233
 msgid "Clear search"
 msgstr "Zoekopdracht wissen"
 
-#: includes/class-plugin.php:238
+#: includes/class-plugin.php:253
 msgid "Close"
 msgstr "Sluiten"
 
-#: includes/class-plugin.php:245
+#: includes/class-plugin.php:260
 msgid "Close player"
 msgstr "Speler sluiten"
 
-#: includes/class-plugin.php:113
+#: includes/class-plugin.php:115
 msgid "Configure the feed"
 msgstr "Feed instellen"
 
-#: includes/class-plugin.php:242
+#: includes/class-plugin.php:257
 msgid "Continue listening"
 msgstr "Verder luisteren"
 
-#: includes/class-plugin.php:210
+#: includes/class-plugin.php:225
 msgid "Could not load the broadcasts"
 msgstr "Kan de uitzendingen niet laden"
 
@@ -111,11 +111,11 @@ msgstr "Kan de uitzendingen niet laden"
 msgid "Date locale"
 msgstr "Datumtaal"
 
-#: includes/class-plugin.php:222
+#: includes/class-plugin.php:237
 msgid "Day"
 msgstr "Dag"
 
-#: includes/class-plugin.php:235
+#: includes/class-plugin.php:250
 msgid "Description"
 msgstr "Beschrijving"
 
@@ -123,7 +123,7 @@ msgstr "Beschrijving"
 msgid "Display"
 msgstr "Weergave"
 
-#: includes/class-plugin.php:239
+#: includes/class-plugin.php:254
 msgid "Download"
 msgstr "Downloaden"
 
@@ -131,7 +131,7 @@ msgstr "Downloaden"
 msgid "Downloads"
 msgstr "Downloads"
 
-#: includes/class-rest-controller.php:118
+#: includes/class-rest-controller.php:129
 msgid "Downloads are disabled."
 msgstr "Downloads zijn uitgeschakeld."
 
@@ -159,15 +159,15 @@ msgstr "Feed-URL"
 msgid "Files are streamed through this site so the download gets a readable file name."
 msgstr "Bestanden lopen via deze site, zodat de download een leesbare bestandsnaam krijgt."
 
-#: includes/class-plugin.php:247
+#: includes/class-plugin.php:262
 msgid "Forward 15 seconds"
 msgstr "15 seconden vooruit"
 
-#: includes/class-plugin.php:237
+#: includes/class-plugin.php:252
 msgid "Hide description"
 msgstr "Beschrijving verbergen"
 
-#: includes/class-plugin.php:233
+#: includes/class-plugin.php:248
 msgid "Hide details"
 msgstr "Details verbergen"
 
@@ -175,7 +175,7 @@ msgstr "Details verbergen"
 msgid "How long the parsed feed is reused before the archive is asked again. Visitors never wait for the archive."
 msgstr "Hoe lang de verwerkte feed wordt hergebruikt voordat het archief opnieuw wordt bevraagd. Bezoekers wachten nooit op het archief."
 
-#: includes/class-plugin.php:234
+#: includes/class-plugin.php:249
 msgid "Info"
 msgstr "Info"
 
@@ -191,15 +191,19 @@ msgstr "Taal voor weekdag- en maandnamen, bijvoorbeeld nl-NL of en-GB. Leeg gebr
 msgid "Last fetched %s ago."
 msgstr "Laatst opgehaald: %s geleden."
 
-#: includes/class-plugin.php:226
+#: includes/class-seo.php:72
+msgid "Listen back to broadcasts from %s. Search by programme, date or title and open the playlist."
+msgstr "Luister uitzendingen van %s terug. Zoek op programma, datum of titel en open de speellijst."
+
+#: includes/class-plugin.php:241
 msgid "Load more"
 msgstr "Meer laden"
 
-#: includes/class-plugin.php:227
+#: includes/class-plugin.php:242
 msgid "Load more (%s remaining)"
 msgstr "Meer laden (%s resterend)"
 
-#: includes/class-plugin.php:209 includes/class-shortcode.php:125
+#: includes/class-plugin.php:224 includes/class-shortcode.php:125
 msgid "Loading broadcasts…"
 msgstr "Uitzendingen laden…"
 
@@ -211,7 +215,7 @@ msgstr "minuten"
 msgid "No archive feed has been configured yet."
 msgstr "Er is nog geen archieffeed ingesteld."
 
-#: includes/class-plugin.php:214
+#: includes/class-plugin.php:229
 msgid "No broadcasts match these filters"
 msgstr "Geen uitzendingen gevonden voor deze filters"
 
@@ -219,7 +223,7 @@ msgstr "Geen uitzendingen gevonden voor deze filters"
 msgid "No feed configured yet."
 msgstr "Nog geen feed ingesteld."
 
-#: includes/class-plugin.php:219
+#: includes/class-plugin.php:234
 msgid "Now playing: %s"
 msgstr "Nu te beluisteren: %s"
 
@@ -235,11 +239,11 @@ msgstr "Optionele attributen: per_page=\"24\", station=\"Radio Example\", accent
 msgid "Optional. One host per line, for audio served from a CDN instead of the feed host. Everything else is rejected."
 msgstr "Optioneel. Eén host per regel, voor audio van een CDN in plaats van de feedhost. Al het andere wordt geweigerd."
 
-#: includes/class-plugin.php:229
+#: includes/class-plugin.php:244
 msgid "Pause"
 msgstr "Pauzeren"
 
-#: includes/class-plugin.php:231
+#: includes/class-plugin.php:246
 msgid "Pause “%s”"
 msgstr "“%s” pauzeren"
 
@@ -247,43 +251,43 @@ msgstr "“%s” pauzeren"
 msgid "Performance and downloads"
 msgstr "Prestaties en downloads"
 
-#: includes/class-plugin.php:228
+#: includes/class-plugin.php:243
 msgid "Play"
 msgstr "Afspelen"
 
-#: includes/class-plugin.php:251
+#: includes/class-plugin.php:266
 msgid "Play again"
 msgstr "Opnieuw afspelen"
 
-#: includes/class-plugin.php:230
+#: includes/class-plugin.php:245
 msgid "Play “%s”"
 msgstr "“%s” afspelen"
 
-#: includes/class-plugin.php:248
+#: includes/class-plugin.php:263
 msgid "Playback position"
 msgstr "Afspeelpositie"
 
-#: includes/class-plugin.php:244
+#: includes/class-plugin.php:259
 msgid "Player"
 msgstr "Speler"
 
-#: includes/class-plugin.php:240
+#: includes/class-plugin.php:255
 msgid "Playlist"
 msgstr "Speellijst"
 
-#: includes/class-plugin.php:211
+#: includes/class-plugin.php:226
 msgid "Please check your connection and try again."
 msgstr "Controleer je verbinding en probeer het opnieuw."
 
-#: includes/class-plugin.php:241
+#: includes/class-plugin.php:256
 msgid "Presented by %s"
 msgstr "Gepresenteerd door %s"
 
-#: includes/class-plugin.php:220
+#: includes/class-plugin.php:235
 msgid "Programme"
 msgstr "Programma"
 
-#: includes/class-plugin.php:243
+#: includes/class-plugin.php:258
 msgid "Resume at %s"
 msgstr "Ga verder bij %s"
 
@@ -291,11 +295,11 @@ msgstr "Ga verder bij %s"
 msgid "RSS 2.0 or Atom feed of the station archive. The feed host is automatically allowed for downloads."
 msgstr "RSS 2.0- of Atom-feed van het stationarchief. De feedhost wordt automatisch toegestaan voor downloads."
 
-#: includes/class-plugin.php:216
+#: includes/class-plugin.php:231
 msgid "Search broadcasts"
 msgstr "Uitzendingen zoeken"
 
-#: includes/class-plugin.php:217
+#: includes/class-plugin.php:232
 msgid "Search programme, date or title"
 msgstr "Zoek op programma, datum of titel"
 
@@ -307,11 +311,11 @@ msgstr "Instellingen"
 msgid "Shortcode"
 msgstr "Shortcode"
 
-#: includes/class-plugin.php:236
+#: includes/class-plugin.php:251
 msgid "Show description"
 msgstr "Beschrijving tonen"
 
-#: includes/class-plugin.php:232
+#: includes/class-plugin.php:247
 msgid "Show details"
 msgstr "Details tonen"
 
@@ -363,7 +367,7 @@ msgstr "De archieffeed gebruikt een niet-ondersteund documenttype."
 msgid "The archive is temporarily unavailable. Please try again in a moment."
 msgstr "Het archief is tijdelijk niet bereikbaar. Probeer het zo meteen opnieuw."
 
-#: includes/class-plugin.php:212
+#: includes/class-plugin.php:227
 msgid "The archive is temporarily unavailable. Showing the last known broadcasts."
 msgstr "Het archief is tijdelijk niet bereikbaar. Je ziet de laatst bekende uitzendingen."
 
@@ -383,7 +387,7 @@ msgstr "Het archief gaf HTTP %d."
 msgid "The broadcast archive is currently unavailable. Please try again later."
 msgstr "Het audioarchief is momenteel niet beschikbaar. Probeer het later opnieuw."
 
-#: includes/class-rest-controller.php:140
+#: includes/class-rest-controller.php:151
 msgid "The download could not be prepared."
 msgstr "De download kon niet worden voorbereid."
 
@@ -395,27 +399,27 @@ msgstr "De feedcache is geleegd."
 msgid "The feed has not been fetched yet."
 msgstr "De feed is nog niet opgehaald."
 
-#: includes/class-rest-controller.php:188
+#: includes/class-rest-controller.php:199
 msgid "The file is empty."
 msgstr "Het bestand is leeg."
 
-#: includes/class-rest-controller.php:176
+#: includes/class-rest-controller.php:187
 msgid "The file is temporarily unavailable. Please try again later."
 msgstr "Het bestand is tijdelijk niet beschikbaar. Probeer het later opnieuw."
 
-#: includes/class-plugin.php:249
+#: includes/class-plugin.php:264
 msgid "This broadcast could not be played."
 msgstr "Deze uitzending kan niet worden afgespeeld."
 
-#: includes/class-plugin.php:250
+#: includes/class-plugin.php:265
 msgid "This broadcast has ended."
 msgstr "Deze uitzending is afgelopen."
 
-#: includes/class-rest-controller.php:128
+#: includes/class-rest-controller.php:139
 msgid "This file cannot be downloaded."
 msgstr "Dit bestand kan niet worden gedownload."
 
-#: includes/class-rest-controller.php:206
+#: includes/class-rest-controller.php:217
 msgid "This file is not an audio broadcast."
 msgstr "Dit bestand is geen audio-uitzending."
 
@@ -435,11 +439,11 @@ msgstr "Tijdzone"
 msgid "Timezone of the broadcast times written in the feed titles."
 msgstr "Tijdzone van de uitzendtijden in de feedtitels."
 
-#: includes/class-plugin.php:213
+#: includes/class-plugin.php:228
 msgid "Try again"
 msgstr "Opnieuw proberen"
 
-#: includes/class-plugin.php:252
+#: includes/class-plugin.php:267
 msgid "Unknown date"
 msgstr "Onbekende datum"
 

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Broadcast Archive 2.0.0\n"
 "Report-Msgid-Bugs-To: https://github.com/HansVanEijsden/broadcast-archive/issues\n"
-"POT-Creation-Date: 2026-11-25 18:49+0000\n"
+"POT-Creation-Date: 2026-11-26 11:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "X-Generator: tools/i18n.py\n"
 "X-Domain: broadcast-archive\n"
 
-#: includes/class-plugin.php:255
+#: includes/class-plugin.php:270
 msgid "%1$s hr %2$s min"
 msgstr ""
 
@@ -23,19 +23,19 @@ msgstr ""
 msgid "%d broadcasts in the last fetch."
 msgstr ""
 
-#: includes/class-plugin.php:224
+#: includes/class-plugin.php:239
 msgid "%s broadcasts"
 msgstr ""
 
-#: includes/class-plugin.php:253
+#: includes/class-plugin.php:268
 msgid "%s hr"
 msgstr ""
 
-#: includes/class-plugin.php:254
+#: includes/class-plugin.php:269
 msgid "%s min"
 msgstr ""
 
-#: includes/class-plugin.php:225
+#: includes/class-plugin.php:240
 msgid "1 broadcast"
 msgstr ""
 
@@ -47,11 +47,11 @@ msgstr ""
 msgid "Add the URL of the podcast feed below."
 msgstr ""
 
-#: includes/class-plugin.php:223
+#: includes/class-plugin.php:238
 msgid "All days"
 msgstr ""
 
-#: includes/class-plugin.php:221
+#: includes/class-plugin.php:236
 msgid "All programmes"
 msgstr ""
 
@@ -59,7 +59,7 @@ msgstr ""
 msgid "Allow visitors to download broadcasts"
 msgstr ""
 
-#: includes/class-plugin.php:246
+#: includes/class-plugin.php:261
 msgid "Back 15 seconds"
 msgstr ""
 
@@ -67,7 +67,7 @@ msgstr ""
 msgid "Broadcast Archive"
 msgstr ""
 
-#: includes/class-plugin.php:111
+#: includes/class-plugin.php:113
 msgid "Broadcast Archive is active, but no feed URL has been configured yet."
 msgstr ""
 
@@ -79,31 +79,31 @@ msgstr ""
 msgid "Clear feed cache"
 msgstr ""
 
-#: includes/class-plugin.php:215
+#: includes/class-plugin.php:230
 msgid "Clear filters"
 msgstr ""
 
-#: includes/class-plugin.php:218
+#: includes/class-plugin.php:233
 msgid "Clear search"
 msgstr ""
 
-#: includes/class-plugin.php:238
+#: includes/class-plugin.php:253
 msgid "Close"
 msgstr ""
 
-#: includes/class-plugin.php:245
+#: includes/class-plugin.php:260
 msgid "Close player"
 msgstr ""
 
-#: includes/class-plugin.php:113
+#: includes/class-plugin.php:115
 msgid "Configure the feed"
 msgstr ""
 
-#: includes/class-plugin.php:242
+#: includes/class-plugin.php:257
 msgid "Continue listening"
 msgstr ""
 
-#: includes/class-plugin.php:210
+#: includes/class-plugin.php:225
 msgid "Could not load the broadcasts"
 msgstr ""
 
@@ -111,11 +111,11 @@ msgstr ""
 msgid "Date locale"
 msgstr ""
 
-#: includes/class-plugin.php:222
+#: includes/class-plugin.php:237
 msgid "Day"
 msgstr ""
 
-#: includes/class-plugin.php:235
+#: includes/class-plugin.php:250
 msgid "Description"
 msgstr ""
 
@@ -123,7 +123,7 @@ msgstr ""
 msgid "Display"
 msgstr ""
 
-#: includes/class-plugin.php:239
+#: includes/class-plugin.php:254
 msgid "Download"
 msgstr ""
 
@@ -131,7 +131,7 @@ msgstr ""
 msgid "Downloads"
 msgstr ""
 
-#: includes/class-rest-controller.php:118
+#: includes/class-rest-controller.php:129
 msgid "Downloads are disabled."
 msgstr ""
 
@@ -159,15 +159,15 @@ msgstr ""
 msgid "Files are streamed through this site so the download gets a readable file name."
 msgstr ""
 
-#: includes/class-plugin.php:247
+#: includes/class-plugin.php:262
 msgid "Forward 15 seconds"
 msgstr ""
 
-#: includes/class-plugin.php:237
+#: includes/class-plugin.php:252
 msgid "Hide description"
 msgstr ""
 
-#: includes/class-plugin.php:233
+#: includes/class-plugin.php:248
 msgid "Hide details"
 msgstr ""
 
@@ -175,7 +175,7 @@ msgstr ""
 msgid "How long the parsed feed is reused before the archive is asked again. Visitors never wait for the archive."
 msgstr ""
 
-#: includes/class-plugin.php:234
+#: includes/class-plugin.php:249
 msgid "Info"
 msgstr ""
 
@@ -191,15 +191,19 @@ msgstr ""
 msgid "Last fetched %s ago."
 msgstr ""
 
-#: includes/class-plugin.php:226
+#: includes/class-seo.php:72
+msgid "Listen back to broadcasts from %s. Search by programme, date or title and open the playlist."
+msgstr ""
+
+#: includes/class-plugin.php:241
 msgid "Load more"
 msgstr ""
 
-#: includes/class-plugin.php:227
+#: includes/class-plugin.php:242
 msgid "Load more (%s remaining)"
 msgstr ""
 
-#: includes/class-plugin.php:209 includes/class-shortcode.php:125
+#: includes/class-plugin.php:224 includes/class-shortcode.php:125
 msgid "Loading broadcasts…"
 msgstr ""
 
@@ -211,7 +215,7 @@ msgstr ""
 msgid "No archive feed has been configured yet."
 msgstr ""
 
-#: includes/class-plugin.php:214
+#: includes/class-plugin.php:229
 msgid "No broadcasts match these filters"
 msgstr ""
 
@@ -219,7 +223,7 @@ msgstr ""
 msgid "No feed configured yet."
 msgstr ""
 
-#: includes/class-plugin.php:219
+#: includes/class-plugin.php:234
 msgid "Now playing: %s"
 msgstr ""
 
@@ -235,11 +239,11 @@ msgstr ""
 msgid "Optional. One host per line, for audio served from a CDN instead of the feed host. Everything else is rejected."
 msgstr ""
 
-#: includes/class-plugin.php:229
+#: includes/class-plugin.php:244
 msgid "Pause"
 msgstr ""
 
-#: includes/class-plugin.php:231
+#: includes/class-plugin.php:246
 msgid "Pause “%s”"
 msgstr ""
 
@@ -247,43 +251,43 @@ msgstr ""
 msgid "Performance and downloads"
 msgstr ""
 
-#: includes/class-plugin.php:228
+#: includes/class-plugin.php:243
 msgid "Play"
 msgstr ""
 
-#: includes/class-plugin.php:251
+#: includes/class-plugin.php:266
 msgid "Play again"
 msgstr ""
 
-#: includes/class-plugin.php:230
+#: includes/class-plugin.php:245
 msgid "Play “%s”"
 msgstr ""
 
-#: includes/class-plugin.php:248
+#: includes/class-plugin.php:263
 msgid "Playback position"
 msgstr ""
 
-#: includes/class-plugin.php:244
+#: includes/class-plugin.php:259
 msgid "Player"
 msgstr ""
 
-#: includes/class-plugin.php:240
+#: includes/class-plugin.php:255
 msgid "Playlist"
 msgstr ""
 
-#: includes/class-plugin.php:211
+#: includes/class-plugin.php:226
 msgid "Please check your connection and try again."
 msgstr ""
 
-#: includes/class-plugin.php:241
+#: includes/class-plugin.php:256
 msgid "Presented by %s"
 msgstr ""
 
-#: includes/class-plugin.php:220
+#: includes/class-plugin.php:235
 msgid "Programme"
 msgstr ""
 
-#: includes/class-plugin.php:243
+#: includes/class-plugin.php:258
 msgid "Resume at %s"
 msgstr ""
 
@@ -291,11 +295,11 @@ msgstr ""
 msgid "RSS 2.0 or Atom feed of the station archive. The feed host is automatically allowed for downloads."
 msgstr ""
 
-#: includes/class-plugin.php:216
+#: includes/class-plugin.php:231
 msgid "Search broadcasts"
 msgstr ""
 
-#: includes/class-plugin.php:217
+#: includes/class-plugin.php:232
 msgid "Search programme, date or title"
 msgstr ""
 
@@ -307,11 +311,11 @@ msgstr ""
 msgid "Shortcode"
 msgstr ""
 
-#: includes/class-plugin.php:236
+#: includes/class-plugin.php:251
 msgid "Show description"
 msgstr ""
 
-#: includes/class-plugin.php:232
+#: includes/class-plugin.php:247
 msgid "Show details"
 msgstr ""
 
@@ -363,7 +367,7 @@ msgstr ""
 msgid "The archive is temporarily unavailable. Please try again in a moment."
 msgstr ""
 
-#: includes/class-plugin.php:212
+#: includes/class-plugin.php:227
 msgid "The archive is temporarily unavailable. Showing the last known broadcasts."
 msgstr ""
 
@@ -383,7 +387,7 @@ msgstr ""
 msgid "The broadcast archive is currently unavailable. Please try again later."
 msgstr ""
 
-#: includes/class-rest-controller.php:140
+#: includes/class-rest-controller.php:151
 msgid "The download could not be prepared."
 msgstr ""
 
@@ -395,27 +399,27 @@ msgstr ""
 msgid "The feed has not been fetched yet."
 msgstr ""
 
-#: includes/class-rest-controller.php:188
+#: includes/class-rest-controller.php:199
 msgid "The file is empty."
 msgstr ""
 
-#: includes/class-rest-controller.php:176
+#: includes/class-rest-controller.php:187
 msgid "The file is temporarily unavailable. Please try again later."
 msgstr ""
 
-#: includes/class-plugin.php:249
+#: includes/class-plugin.php:264
 msgid "This broadcast could not be played."
 msgstr ""
 
-#: includes/class-plugin.php:250
+#: includes/class-plugin.php:265
 msgid "This broadcast has ended."
 msgstr ""
 
-#: includes/class-rest-controller.php:128
+#: includes/class-rest-controller.php:139
 msgid "This file cannot be downloaded."
 msgstr ""
 
-#: includes/class-rest-controller.php:206
+#: includes/class-rest-controller.php:217
 msgid "This file is not an audio broadcast."
 msgstr ""
 
@@ -435,11 +439,11 @@ msgstr ""
 msgid "Timezone of the broadcast times written in the feed titles."
 msgstr ""
 
-#: includes/class-plugin.php:213
+#: includes/class-plugin.php:228
 msgid "Try again"
 msgstr ""
 
-#: includes/class-plugin.php:252
+#: includes/class-plugin.php:267
 msgid "Unknown date"
 msgstr ""
 

@@ -81,6 +81,40 @@ assets available on the host page. The archive page itself keeps its own
 `Archive` instance and transport; both use the same component and audio element
 per page.
 
+## Artist links and deep links
+
+The archive is deliberately station-neutral, so it does not know about artist
+pages. It exposes a filter instead:
+
+```php
+add_filter( 'broadcast_archive_payload', function ( array $payload ): array {
+    foreach ( $payload['items'] as &$item ) {
+        foreach ( $item['playlist'] as &$track ) {
+            $track['artist_url'] = 'https://example.com/artiest/' . sanitize_title( $track['artist'] ) . '/';
+        }
+    }
+
+    return $payload;
+} );
+```
+
+When a track has an `artist_url`, the archive renders the artist name as a
+link. A missing or non-HTTP URL leaves the name as plain text. The Broadcast
+Archive plugin does not depend on the plugin that supplies the URLs.
+
+The search box also supports a shareable query string: open
+`/uitzending-gemist/?q=Snelle` and the archive starts with that search. The
+address bar follows the current search, so the filtered view can be copied or
+bookmarked.
+
+## SEO metadata
+
+The page that hosts `[broadcast_archive]` gets a static `PodcastSeries` JSON-LD
+node, a meta description and an Open Graph image (the site icon). These are
+static page values, not episode data, so they are safe in a page cache with no
+expiry. With Yoast active the description and image use Yoast's filters; the
+plain WordPress fallback prints the description in `wp_head`.
+
 ## Installation
 
 1. [Download the latest release](https://github.com/HansVanEijsden/broadcast-archive/releases/latest)

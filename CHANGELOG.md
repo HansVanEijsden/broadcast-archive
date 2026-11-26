@@ -4,7 +4,30 @@ All notable changes to Broadcast Archive are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/);
 the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [2.3.0] — 2026-11-26
+
+### Added
+
+- **Artist links in the playlist.** The public REST payload now runs through
+  the `broadcast_archive_payload` filter. A companion plugin can add an
+  `artist_url` to each playlist track; the archive renders that artist name as
+  a link. The archive stays station- and plugin-neutral: without the filter,
+  names remain plain text.
+- **Shareable search URLs.** The search box reads `?q=` on load and keeps the
+  address bar in sync, so a link from an artist page can open the archive
+  already filtered. Malformed URLs are ignored.
+- **SEO metadata for the archive page.** A `PodcastSeries` JSON-LD node, a
+  static meta description and an Open Graph image (site icon) are printed on
+  the page that hosts the shortcode. Yoast filters are used when Yoast is
+  active; a plain WordPress fallback prints the description.
+
+### Changed
+
+- The archive's public payload grows slightly when a companion plugin adds
+  artist URLs. The feed cache and the 60-second REST cache are unchanged.
+
 ## [2.2.1] — 2026-11-25
+
 
 ### Fixed
 

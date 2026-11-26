@@ -163,6 +163,10 @@
       .replace(/[\u0300-\u036f]/g, '');
   }
 
+  function isHttpUrl(value) {
+    return /^https?:\/\//i.test(String(value || ''));
+  }
+
   function pad(value) {
     return value < 10 ? '0' + value : String(value);
   }
@@ -386,6 +390,7 @@
     this.items = [];
     this.programs = [];
     this.query = '';
+    this.initialQuery = '';
     this.program = '';
     this.day = '';
     this.visible = this.perPage;
@@ -423,10 +428,51 @@
       return;
     }
 
+    this.readUrlState();
     this.buildShell();
     this.buildTransport();
     this.bindGlobal();
     this.load(false);
+  };
+
+  /**
+   * Read a shareable search query from the URL.
+   */
+  Archive.prototype.readUrlState = function () {
+    try {
+      var query = (new URLSearchParams(window.location.search).get('q') || '').trim();
+
+      if (query) {
+        this.initialQuery = query;
+        this.query = normalize(query);
+      }
+    } catch (error) {
+      // URLSearchParams is universal in supported browsers; ignore malformed URLs.
+    }
+  };
+
+  /**
+   * Keep the address bar in sync with the current search.
+   */
+  Archive.prototype.syncUrl = function () {
+    if (!window.history || !window.history.replaceState) {
+      return;
+    }
+
+    try {
+      var url = new URL(window.location.href);
+      var value = this.searchInput ? this.searchInput.value.trim() : '';
+
+      if (value) {
+        url.searchParams.set('q', value);
+      } else {
+        url.searchParams.delete('q');
+      }
+
+      window.history.replaceState({}, '', url.toString());
+    } catch (error) {
+      // A failed history update must never break search or playback.
+    }
   };
 
   /* ------------------------------- shell ------------------------------ */
@@ -510,12 +556,16 @@
     });
     this.searchInput.setAttribute('aria-label', L.searchLabel || L.searchPlaceholder || '');
 
+    if (this.initialQuery) {
+      this.searchInput.value = this.initialQuery;
+    }
+
     this.searchClear = el('button', {
       type: 'button',
       class: 'ba-search__clear',
       'aria-label': L.clearSearch || ''
     }, icon('close'));
-    this.searchClear.hidden = true;
+    this.searchClear.hidden = !this.initialQuery;
 
     this.searchClear.addEventListener('click', function () {
       self.searchInput.value = '';
@@ -523,6 +573,7 @@
       self.visible = self.perPage;
       self.open.clear();
       self.searchClear.hidden = true;
+      self.syncUrl();
       self.renderList();
       self.searchInput.focus();
     });
@@ -535,6 +586,7 @@
         self.query = normalize(self.searchInput.value.trim());
         self.visible = self.perPage;
         self.open.clear();
+        self.syncUrl();
         self.renderList();
       }, 180);
     });
@@ -544,6 +596,7 @@
 
       if ('' === self.searchInput.value) {
         self.query = '';
+        self.syncUrl();
         self.renderList();
       }
     });
@@ -1383,6 +1436,8 @@
       this.searchClear.hidden = true;
     }
 
+    this.syncUrl();
+
     if (this.programSelect) {
       this.programSelect.value = '';
     }
@@ -1871,10 +1926,18 @@
     }
 
     var tracks = item.playlist.map(function (track) {
+      var artist = track.artist_url && isHttpUrl(track.artist_url)
+        ? el('a', {
+            class: 'ba-track__artist ba-track__artist--link',
+            href: track.artist_url,
+            text: track.artist
+          })
+        : el('strong', { class: 'ba-track__artist', text: track.artist });
+
       return el('li', { class: 'ba-track' }, [
         el('span', { class: 'ba-track__time', text: track.time }),
         el('span', { class: 'ba-track__song' }, [
-          el('strong', { class: 'ba-track__artist', text: track.artist }),
+          artist,
           el('span', { class: 'ba-track__title', text: track.title })
         ])
       ]);

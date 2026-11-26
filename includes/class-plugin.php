@@ -62,6 +62,8 @@ final class Plugin {
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ) );
 		add_action( 'admin_notices', array( $this, 'maybe_show_config_notice' ) );
 
+		new SEO();
+
 		if ( is_admin() ) {
 			Settings::init();
 		}

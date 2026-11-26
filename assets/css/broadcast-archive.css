@@ -724,6 +724,19 @@
 	font-weight: 650;
 }
 
+.ba .ba-track__artist--link {
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-decoration-color: rgba(20, 22, 26, 0.28);
+	text-underline-offset: 2px;
+	transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.ba .ba-track__artist--link:hover {
+	color: var(--ba-accent);
+	text-decoration-color: currentColor;
+}
+
 .ba .ba-track__title {
 	color: #3a414b;
 }

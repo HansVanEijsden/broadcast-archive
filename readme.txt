@@ -4,7 +4,7 @@ Tags: radio, podcast, audio, player, archive, uitzending gemist
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 2.2.1
+Stable tag: 2.3.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -74,6 +74,11 @@ Playback, search and filters need JavaScript, as any audio player does. Without 
 2. Mobile schedule with the transport open.
 
 == Changelog ==
+
+= 2.3.0 =
+* Artist names in the playlist can link to artist pages through the `broadcast_archive_payload` filter; plain text without a companion plugin.
+* Shareable `?q=` search URLs, kept in sync with the address bar.
+* Static `PodcastSeries` JSON-LD, meta description and Open Graph image for the archive page.
 
 = 2.0.0 =
 * Rewrite. Fixed intermittent "Security check failed" / failed-to-load errors for logged-out visitors caused by a nonce embedded in page-cached HTML.

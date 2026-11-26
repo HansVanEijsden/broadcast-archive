@@ -96,6 +96,17 @@ final class Rest_Controller {
 			);
 		}
 
+		/**
+		 * Filter the public episode payload before it is returned.
+		 *
+		 * A companion plugin can enrich items without coupling this plugin to
+		 * it. For example, the playlists plugin adds an `artist_url` to each
+		 * playlist track so the archive can link artist names to their pages.
+		 *
+		 * @param array<string,mixed> $payload Normalised episode payload.
+		 */
+		$payload = (array) apply_filters( 'broadcast_archive_payload', $payload );
+
 		$response = rest_ensure_response( $payload );
 
 		$response->header( 'Cache-Control', 'public, max-age=60, stale-while-revalidate=300' );
