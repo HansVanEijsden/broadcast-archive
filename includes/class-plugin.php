@@ -253,6 +253,7 @@ final class Plugin {
 				'close'            => __( 'Close', 'broadcast-archive' ),
 				'download'         => __( 'Download', 'broadcast-archive' ),
 				'playlist'         => __( 'Playlist', 'broadcast-archive' ),
+				'artistPage'       => __( 'View artist %s', 'broadcast-archive' ),
 				'presentedBy'      => __( 'Presented by %s', 'broadcast-archive' ),
 				'continueListening' => __( 'Continue listening', 'broadcast-archive' ),
 				'continueAt'       => __( 'Resume at %s', 'broadcast-archive' ),

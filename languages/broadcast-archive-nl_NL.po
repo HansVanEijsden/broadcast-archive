@@ -15,7 +15,7 @@ msgstr ""
 "X-Generator: tools/i18n.py\n"
 "X-Domain: broadcast-archive\n"
 
-#: includes/class-plugin.php:270
+#: includes/class-plugin.php:271
 msgid "%1$s hr %2$s min"
 msgstr "%1$s u %2$s min"
 
@@ -27,11 +27,11 @@ msgstr "%d uitzendingen bij de laatste ophaal."
 msgid "%s broadcasts"
 msgstr "%s uitzendingen"
 
-#: includes/class-plugin.php:268
+#: includes/class-plugin.php:269
 msgid "%s hr"
 msgstr "%s uur"
 
-#: includes/class-plugin.php:269
+#: includes/class-plugin.php:270
 msgid "%s min"
 msgstr "%s min"
 
@@ -59,7 +59,7 @@ msgstr "Alle programma's"
 msgid "Allow visitors to download broadcasts"
 msgstr "Bezoekers mogen uitzendingen downloaden"
 
-#: includes/class-plugin.php:261
+#: includes/class-plugin.php:262
 msgid "Back 15 seconds"
 msgstr "15 seconden terug"
 
@@ -91,7 +91,7 @@ msgstr "Zoekopdracht wissen"
 msgid "Close"
 msgstr "Sluiten"
 
-#: includes/class-plugin.php:260
+#: includes/class-plugin.php:261
 msgid "Close player"
 msgstr "Speler sluiten"
 
@@ -99,7 +99,7 @@ msgstr "Speler sluiten"
 msgid "Configure the feed"
 msgstr "Feed instellen"
 
-#: includes/class-plugin.php:257
+#: includes/class-plugin.php:258
 msgid "Continue listening"
 msgstr "Verder luisteren"
 
@@ -159,7 +159,7 @@ msgstr "Feed-URL"
 msgid "Files are streamed through this site so the download gets a readable file name."
 msgstr "Bestanden lopen via deze site, zodat de download een leesbare bestandsnaam krijgt."
 
-#: includes/class-plugin.php:262
+#: includes/class-plugin.php:263
 msgid "Forward 15 seconds"
 msgstr "15 seconden vooruit"
 
@@ -255,7 +255,7 @@ msgstr "Prestaties en downloads"
 msgid "Play"
 msgstr "Afspelen"
 
-#: includes/class-plugin.php:266
+#: includes/class-plugin.php:267
 msgid "Play again"
 msgstr "Opnieuw afspelen"
 
@@ -263,11 +263,11 @@ msgstr "Opnieuw afspelen"
 msgid "Play “%s”"
 msgstr "“%s” afspelen"
 
-#: includes/class-plugin.php:263
+#: includes/class-plugin.php:264
 msgid "Playback position"
 msgstr "Afspeelpositie"
 
-#: includes/class-plugin.php:259
+#: includes/class-plugin.php:260
 msgid "Player"
 msgstr "Speler"
 
@@ -279,7 +279,7 @@ msgstr "Speellijst"
 msgid "Please check your connection and try again."
 msgstr "Controleer je verbinding en probeer het opnieuw."
 
-#: includes/class-plugin.php:256
+#: includes/class-plugin.php:257
 msgid "Presented by %s"
 msgstr "Gepresenteerd door %s"
 
@@ -287,7 +287,7 @@ msgstr "Gepresenteerd door %s"
 msgid "Programme"
 msgstr "Programma"
 
-#: includes/class-plugin.php:258
+#: includes/class-plugin.php:259
 msgid "Resume at %s"
 msgstr "Ga verder bij %s"
 
@@ -407,11 +407,11 @@ msgstr "Het bestand is leeg."
 msgid "The file is temporarily unavailable. Please try again later."
 msgstr "Het bestand is tijdelijk niet beschikbaar. Probeer het later opnieuw."
 
-#: includes/class-plugin.php:264
+#: includes/class-plugin.php:265
 msgid "This broadcast could not be played."
 msgstr "Deze uitzending kan niet worden afgespeeld."
 
-#: includes/class-plugin.php:265
+#: includes/class-plugin.php:266
 msgid "This broadcast has ended."
 msgstr "Deze uitzending is afgelopen."
 
@@ -443,7 +443,7 @@ msgstr "Tijdzone van de uitzendtijden in de feedtitels."
 msgid "Try again"
 msgstr "Opnieuw proberen"
 
-#: includes/class-plugin.php:267
+#: includes/class-plugin.php:268
 msgid "Unknown date"
 msgstr "Onbekende datum"
 
@@ -454,6 +454,10 @@ msgstr "Gebruik de tijdzone van de site"
 #: includes/class-settings.php:446
 msgid "Used for play buttons, the current position and focus rings."
 msgstr "Gebruikt voor afspeelknoppen, de huidige positie en focusranden."
+
+#: includes/class-plugin.php:256
+msgid "View artist %s"
+msgstr "Bekijk artiest %s"
 
 #: includes/class-settings.php:341
 msgid "You are not allowed to do this."

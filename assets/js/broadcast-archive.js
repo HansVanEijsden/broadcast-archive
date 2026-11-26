@@ -1930,7 +1930,8 @@
         ? el('a', {
             class: 'ba-track__artist ba-track__artist--link',
             href: track.artist_url,
-            text: track.artist
+            text: track.artist,
+            'aria-label': format(L.artistPage || 'View artist %s', track.artist)
           })
         : el('strong', { class: 'ba-track__artist', text: track.artist });
 

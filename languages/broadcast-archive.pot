@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Broadcast Archive 2.0.0\n"
 "Report-Msgid-Bugs-To: https://github.com/HansVanEijsden/broadcast-archive/issues\n"
-"POT-Creation-Date: 2026-11-26 11:48+0000\n"
+"POT-Creation-Date: 2026-11-26 11:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "X-Generator: tools/i18n.py\n"
 "X-Domain: broadcast-archive\n"
 
-#: includes/class-plugin.php:270
+#: includes/class-plugin.php:271
 msgid "%1$s hr %2$s min"
 msgstr ""
 
@@ -27,11 +27,11 @@ msgstr ""
 msgid "%s broadcasts"
 msgstr ""
 
-#: includes/class-plugin.php:268
+#: includes/class-plugin.php:269
 msgid "%s hr"
 msgstr ""
 
-#: includes/class-plugin.php:269
+#: includes/class-plugin.php:270
 msgid "%s min"
 msgstr ""
 
@@ -59,7 +59,7 @@ msgstr ""
 msgid "Allow visitors to download broadcasts"
 msgstr ""
 
-#: includes/class-plugin.php:261
+#: includes/class-plugin.php:262
 msgid "Back 15 seconds"
 msgstr ""
 
@@ -91,7 +91,7 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: includes/class-plugin.php:260
+#: includes/class-plugin.php:261
 msgid "Close player"
 msgstr ""
 
@@ -99,7 +99,7 @@ msgstr ""
 msgid "Configure the feed"
 msgstr ""
 
-#: includes/class-plugin.php:257
+#: includes/class-plugin.php:258
 msgid "Continue listening"
 msgstr ""
 
@@ -159,7 +159,7 @@ msgstr ""
 msgid "Files are streamed through this site so the download gets a readable file name."
 msgstr ""
 
-#: includes/class-plugin.php:262
+#: includes/class-plugin.php:263
 msgid "Forward 15 seconds"
 msgstr ""
 
@@ -255,7 +255,7 @@ msgstr ""
 msgid "Play"
 msgstr ""
 
-#: includes/class-plugin.php:266
+#: includes/class-plugin.php:267
 msgid "Play again"
 msgstr ""
 
@@ -263,11 +263,11 @@ msgstr ""
 msgid "Play “%s”"
 msgstr ""
 
-#: includes/class-plugin.php:263
+#: includes/class-plugin.php:264
 msgid "Playback position"
 msgstr ""
 
-#: includes/class-plugin.php:259
+#: includes/class-plugin.php:260
 msgid "Player"
 msgstr ""
 
@@ -279,7 +279,7 @@ msgstr ""
 msgid "Please check your connection and try again."
 msgstr ""
 
-#: includes/class-plugin.php:256
+#: includes/class-plugin.php:257
 msgid "Presented by %s"
 msgstr ""
 
@@ -287,7 +287,7 @@ msgstr ""
 msgid "Programme"
 msgstr ""
 
-#: includes/class-plugin.php:258
+#: includes/class-plugin.php:259
 msgid "Resume at %s"
 msgstr ""
 
@@ -407,11 +407,11 @@ msgstr ""
 msgid "The file is temporarily unavailable. Please try again later."
 msgstr ""
 
-#: includes/class-plugin.php:264
+#: includes/class-plugin.php:265
 msgid "This broadcast could not be played."
 msgstr ""
 
-#: includes/class-plugin.php:265
+#: includes/class-plugin.php:266
 msgid "This broadcast has ended."
 msgstr ""
 
@@ -443,7 +443,7 @@ msgstr ""
 msgid "Try again"
 msgstr ""
 
-#: includes/class-plugin.php:267
+#: includes/class-plugin.php:268
 msgid "Unknown date"
 msgstr ""
 
@@ -453,6 +453,10 @@ msgstr ""
 
 #: includes/class-settings.php:446
 msgid "Used for play buttons, the current position and focus rings."
+msgstr ""
+
+#: includes/class-plugin.php:256
+msgid "View artist %s"
 msgstr ""
 
 #: includes/class-settings.php:341
